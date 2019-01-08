@@ -1,0 +1,213 @@
+@CHARSET "UTF-8";
+
+/* Sticky footer styles
+ -------------------------------------------------- */
+
+ .box-hpe {
+  height: 140px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+  background: #fafafa;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
+}
+
+#subscriberPanel label {
+    width: 110px;
+}
+
+.box-row-ml label, .box-row-ml input, .box-row-ml button {
+    margin-left: 10px !important;
+}
+
+.box-row-2 label, .box-row-2 input, .box-row-2 button, .box-row-2 select {
+  margin-left: 10px;
+}
+
+.box-row-2 :first-child {
+  margin-left: 0;
+}
+
+.box-row-2 .col1 {
+   width:79px;
+}
+
+.box-row-2 .col2 {
+    width:79px;
+}
+
+.box-row-2 .col3 {
+    width:115px;
+}
+
+.panel-small label {
+    width:70px;
+}
+
+.leftPanel {
+  width: 977px;
+}
+.rightPanel {
+    width: 300px;
+    flex-wrap: wrap;
+    margin-left: 20px;
+    margin-top: 4px;
+    height: 87.7% !important;
+}
+
+.fillWidth {
+  width: 99%;
+}
+
+#CdrSearchForm {
+    display: flex;
+    height: 100%;
+}
+
+#CdrSearchForm label, .tableInfoPanel label {
+    line-height: 0.81em;
+    font-size: 0.87em;
+}
+
+#CdrSearchForm input[type=text], #CdrSearchForm input[type=number], #CdrSearchForm select {
+    height: calc(1.7125rem + 2px) !important;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    border-radius: 0.2rem;
+}
+
+.customSmall input[type=text], .customSmall input[type=number], .customSmall select {
+  height: calc(1.7125rem + 2px) !important;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  border-radius: 0.2rem;
+}
+
+#loadPeriodCdr label {
+  width: 35px;
+}
+
+.orderingPanel .large {
+  width: 123px;
+}
+
+.orderingPanel .small {
+  width: 80px;
+}
+
+.orderingPanel label, .orderingPanel input, .orderingPanel button, .orderingPanel select {
+  margin-left: 20px;
+}
+
+.orderingPanelFirst :first-child {
+  margin-left: 0;
+}
+
+.groupingPanel input {
+  margin-left:16px;
+  margin-right:7px;
+}
+
+.groupingPanel label:first-child {
+  margin-right:10px;
+}
+
+.form-group {
+  margin-bottom: 0.5rem;
+}
+
+.p-table-no-message-info {
+  text-align: center;
+  background: #F4F4F4;
+  border-left: 1px solid #c8c8c8;
+  border-right: 1px solid #c8c8c8;
+  padding-bottom: 12px;
+}
+
+.ui-table-tbody tr td button span {
+  display:none;
+}
+
+.ui-table-tbody tr td .ui-button .ui-button-text {
+  display: none;
+}
+
+.ui-table-tbody tr td a {
+  color: #007ad9 !important;
+  text-decoration: underline !important;
+  cursor: pointer;
+}
+
+.cal-1 {
+  height: 30px;
+  /*z-index: 999;*/
+}
+
+.cal-2 {
+  height: 30px;
+  margin-left: 10px;
+  /*z-index: 999;*/
+}
+
+.colPanelVertical {
+  display:flex;
+  width: 280px;
+  height: 449px;
+  margin-top: 4px;
+  margin-left: 15px;
+  border-radius: 3px;
+  background: #fafafa;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
+}
+
+.box {
+	border-top: 1px solid #9d9d9d;
+	width: 170px;
+	display: flex;
+	justify-content: center;
+  align-items: center;
+  height: 32px;
+}
+
+.colPanelVertical .leftFlagsPanel {
+  border-bottom: 1px solid #9d9d9d;
+  width: 110px;
+}
+
+.colPanelVertical .leftFlagsPanel label {
+	border-style: solid;
+	border-color: #9d9d9d;
+  border-width: 1px 1px 0 1px;
+  border-left: none;
+	display: flex;
+	align-items: center;
+  padding: 5px;
+  margin-bottom: 0;
+}
+
+.colPanelVertical .rightFlagsPanel {
+  border-bottom: 1px solid #9d9d9d;
+  width: 170px;
+}
+
+.colPanelVertical .rightFlagsPanel label {
+  width: 135px;
+  margin-left: 15px;
+}
+
+.form-check-input {
+  position: absolute;
+  margin-top: 0;
+  margin-left: -1rem;
+}
+
+.btn-group-xs>.btn, .btn-xs {
+  padding: 0.2rem .4rem;
+  font-size: .83rem;
+  line-height: 1.4;
+  border-radius: .2rem;
+}

@@ -1,0 +1,248 @@
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+@CHARSET "UTF-8";
+
+/*-------------------------------Html, Body, p-------------------------------*/
+html, body {
+    height: 100%;
+    /* The html and body elements cannot have any padding or margin. */
+}
+
+body {
+    /*font-family: 'Poppins', sans-serif;*/
+    background: white;
+}
+
+p {
+    font-size: 1.1em;
+    font-weight: 300;
+    line-height: 1.7em;
+    color: #999;
+}
+
+/*-------------------------------Wrapper for page content to push down footer-------------------------------*/
+#wrap {
+    min-height: 100%;
+    height: auto;
+    /* Negative indent footer by it's height */
+    margin: 0 auto -34px;
+    /* Pad bottom by footer height */
+    padding: 0 0 34px;
+}
+
+#wrap > .container {
+    padding-top: 50px;
+}
+
+/*-------------------------------Custom sizes-------------------------------*/
+.w-10 { width: 10% !important; }
+
+.w-35 { width: 35% !important; }
+
+.ml-1 { margin-left: 1% !important;}
+
+.ml-2 { margin-left: 2% !important;}
+
+.mr-1 { margin-right: 1% !important;}
+
+.mr-2 { margin-right: 2% !important;}
+
+.mr-15 { margin-right: 15px !important;}
+
+.col-sm-3-5 {
+    flex: 0 0 30%;
+    max-width: 30%;
+}
+
+.col-sm-8-5 {
+  flex: 0 0 70%;
+  max-width: 70%;
+}
+
+/*-------------------------------Header-------------------------------*/
+
+.navbar-brand {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+#navbarSupportedContent ul li a {
+  color: #ffffff;
+}
+
+/*-------------------------------ComboBox-------------------------------*/
+
+@media (min-width: 768px) {
+  .form-search .combobox-container,
+  .form-inline .combobox-container {
+    display: inline-block;
+    margin-bottom: 0;
+    vertical-align: top;
+  }
+  .form-search .combobox-container .input-group-addon,
+  .form-inline .combobox-container .input-group-addon {
+    width: auto;
+  }
+}
+
+.combobox-selected .caret {
+  display: none;
+}
+
+/*:not doesn't work in IE8*/
+
+.combobox-container:not(.combobox-selected) .glyphicon-remove {
+  display: none;
+}
+
+.typeahead-long {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.control-group.error .combobox-container .add-on {
+  color: #B94A48;
+  border-color: #B94A48;
+}
+
+.control-group.error .combobox-container .caret {
+  border-top-color: #B94A48;
+}
+
+.control-group.warning .combobox-container .add-on {
+  color: #C09853;
+  border-color: #C09853;
+}
+
+.control-group.warning .combobox-container .caret {
+  border-top-color: #C09853;
+}
+
+.control-group.success .combobox-container .add-on {
+  color: #468847;
+  border-color: #468847;
+}
+
+.control-group.success .combobox-container .caret {
+  border-top-color: #468847;
+}
+
+/*-------------------------------End of combobox-------------------------------*/
+
+/* Bootstrap Table */
+#search-results th, #terminalGroupList th {
+  text-align: center;
+  vertical-align: middle;
+}
+
+#terminalGroupList td {
+  text-align: center;
+}
+
+/* Prime Table*/
+.prime-table {
+  font-size: 0.9em;
+}
+
+/* footer */
+#footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 34px;
+  background-color: #F5F5F5;
+  text-align: center;
+  border-top: 1px solid #E5E5E5;
+}
+
+#footer p {
+  line-height: 0.4em;
+}
+
+/*-------------------------------Others-------------------------------*/
+
+.hpe-container {
+  padding-top: 50px;
+}
+
+h2 i.icon-check {
+  vertical-align: middle;
+}
+
+input[type=radio] {
+  width: 18px;
+  height: 18px;
+  margin-top: 4px;
+}
+
+body .ui-button.ui-button-text-only .ui-button-text {
+  padding: .59em 1.8em;
+}
+
+body .ui-inputgroup .ui-inputgroup-addon {
+  padding: .2em;
+}
+
+.bd-navbar {
+  height: 3rem;
+  background-color: #1D2124;
+  box-shadow: 0 0.5rem 1rem rgba(0,0,0,.05), inset 0 -1px 0 rgba(0,0,0,.1);
+}
+
+header.title {
+  margin-top: 0.5%;
+  display: flex;
+  justify-content: center;
+}
+
+@media (min-width: 1000px) {
+  #main {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 1000px) {
+  #main {
+    justify-content: baseline;
+  }
+}
+
+header h4 {
+  line-height: 1;
+}
+
+.form-control.is-invalid {
+  border-width: 2px;
+}
+
+body .ui-datepicker table {
+  font-size: 12px;
+}
+
+p-calendar span .ui-calendar-button {
+  margin-left: -28px !important;
+  background-color: #17a2b8;
+  border: 1px solid #17a2b8;
+}
+
+p-calendar span .ui-calendar-button span {
+  margin-left: -8px !important;
+}
+
+p-calendar span .ui-inputtext {
+  width:140px;
+}
+
+body .ui-selectbutton .ui-button.ui-state-active {
+  background-color: red !important;
+  border: 1px solid red !important;
+  font-weight: bold;
+}
+
+/* p-selectbutton .ui.selectbutton .ui.button.ui-button.ui-state-active {
+  background-color: #17a2b8 !important;
+  border: 1px solid #17a2b8 !important;
+} */
+
+table thead th {
+  text-align: center;
+}

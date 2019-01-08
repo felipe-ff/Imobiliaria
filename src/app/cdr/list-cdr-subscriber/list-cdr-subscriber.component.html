@@ -1,0 +1,71 @@
+<header class="title">
+  <h4>Detalhes de CDR</h4>
+</header>
+
+<p-table #dts [columns]="cols" [value]="cdrs" [lazy]="true" (onLazyLoad)="loadCdrsLazy($event)" [paginator]="true" [rows]="13"
+        [scrollable]="true" scrollHeight="500px" [totalRecords]="totalRecords" [loading]="loading" [style]="{width: tableWidth, padding: '0 2.8%'}">
+  <ng-template pTemplate="colgroup" let-columns>
+      <colgroup>
+          <col *ngFor="let col of columns">
+      </colgroup>
+  </ng-template>
+
+  <ng-template pTemplate="emptymessage">
+      <div class="p-table-no-message-info">Não há dados para essa pesquisa</div>
+  </ng-template>
+  <ng-template pTemplate="caption">
+      <div class="ui-helper-clearfix">
+        <button type="button" class="btn btn-info btn-sm" (click)="loadExportTable()" style="float:left">
+          <i class="fa fa-file-o" style="margin-right:7px"></i>Exportar
+        </button>
+        <button type="button" (click)="goToCdrChartPage()" class="btn btn-info btn-sm" style="float:left; margin-left: 15px">
+          <i class="fa fa-bar-chart" style="margin-right:7px"></i>Gerar Gráfico
+        </button>
+      </div>
+    </ng-template>
+  <ng-template pTemplate="header" let-columns>
+    <tr>
+        <th *ngFor="let col of columns" [style.width]="col.width">
+              {{col.header}}
+        </th>
+      </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-rowData let-columns="columns">
+      <tr>
+        <td [hidden]="rowData == null" *ngFor="let col of columns" [style.width]="col.width">
+            <span [hidden]="col.type === 'button'">{{rowData != null ? convert(rowData[col.field], col.type) : ''}}</span>
+            <button [hidden]="!(col.type === 'button')" pButton icon="fa-search" (click)="goToDetailSpecifPage(rowData)" style.height="15px">
+                <i class="fa fa-search"></i>
+            </button>
+        </td>
+      </tr>
+  </ng-template>
+</p-table>
+
+<p-table hidden="true" #exportDts [columns]="colsExport" [value]="cdrsExport">
+  <ng-template pTemplate="colgroup" let-columns>
+      <colgroup>
+          <col *ngFor="let col of columns">
+      </colgroup>
+  </ng-template>
+
+  <ng-template pTemplate="header" let-columns>
+    <tr>
+        <th *ngFor="let col of columns" [style.width]="col.width">
+              {{col.header}}
+        </th>
+      </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-rowData let-columns="columns">
+      <tr>
+        <td [hidden]="rowData == null" *ngFor="let col of columns" [style.width]="col.width">
+            <span [hidden]="col.type === 'button'">{{rowData != null ? rowData[col.field]}</span>
+            <button [hidden]="!(col.type === 'button')" pButton icon="fa-search" (click)="goToDetailSpecifPage(rowData)" style.height="15px">
+                <i class="fa fa-search"></i>
+            </button>
+        </td>
+      </tr>
+  </ng-template>
+</p-table>
+
+<button type="button" (click)="backToList()" style="margin-left:4%" class="btn btn-info btn-sm mt-2">Voltar</button>

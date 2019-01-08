@@ -1,0 +1,85 @@
+/* input[type=text], input[type=number], select {
+  height: calc(1.7125rem + 2px) !important;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  border-radius: 0.2rem;
+}
+
+label {
+  line-height: 0.81em;
+  font-size: 0.87em;
+} */
+
+.home-image {
+  max-width: 1285px;
+  max-height: 723px;
+  border-radius: 1.5rem;
+  margin-top: 15px;
+}
+
+.address {
+  background: white;
+  height: 75px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-right: 12%;
+  padding-left: 10%;
+}
+
+.address-box {
+  width: 220px;
+  display: flex;
+  align-items: center;
+}
+
+.box-hpe {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+  background: #0482D6;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
+}
+
+.orderingPanel .large {
+  width: 123px;
+}
+
+.orderingPanel .small {
+  width: 80px;
+}
+
+.orderingPanel label, .orderingPanel input, .orderingPanel button, .orderingPanel select {
+  margin-left: 20px;
+}
+
+.range {
+  margin-top: -5px;
+  margin-bottom: 5px;
+  color: white;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.facebook {
+  background: blue;
+  width: 20px;
+  height: 22px;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+}
+
+.address-text {
+  position: relative;
+  line-height: 20px;
+  font-size: 13px;
+  color: #253d4a;
+}
+
+body .ui-slider .ui-slider-range {
+  background-color: red !important;
+}

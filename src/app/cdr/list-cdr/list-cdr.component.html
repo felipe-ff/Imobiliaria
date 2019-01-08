@@ -1,0 +1,114 @@
+<div style="display:flex; padding: 0 2.65%; margin-bottom: -5px" class="tableInfoPanel customSmall">
+  <div class="col-sm-6 p-1 box-row-ml">
+    <div class="col-sm-12 box-hpe">
+      <label class="row col-form-label"><b>Data e Hora</b></label>
+      <div class="form-group flex justify-content-center row w-100">
+        <label class="col-form-label col1">Período Inicial de Seleção CDRs:</label>
+        <label *ngIf="startDatetime != 0" class="col-form-label col2">{{startDatetime | date:'dd/MM/yyyy HH:mm:ss'}}</label>
+        <label *ngIf="startDatetime == 0" class="col-form-label col2">não informado</label>
+      </div>
+      <div class="form-group flex justify-content-center row w-100">
+        <label class="col-form-label col1">Período Final de Seleção CDRs:</label>
+        <label *ngIf="endDatetime != 0" class="col-form-label col2">{{endDatetime | date:'dd/MM/yyyy HH:mm:ss'}}</label>
+        <label *ngIf="endDatetime == 0"class="col-form-label col2">não informado</label>
+      </div>
+      <div class="form-group flex justify-content-center row w-100">
+        <label class="col-form-label col1">Início Execução:</label>
+        <label class="col-form-label col2">{{startExecution | date:'dd/MM/yyyy HH:mm:ss:SSS'}}</label>
+      </div>
+      <div class="form-group flex justify-content-center row w-100">
+        <label class="col-form-label col1">Fim Execução:</label>
+        <label class="col-form-label col2">{{endExecution | date:'dd/MM/yyyy HH:mm:ss:SSS'}}</label>
+      </div>
+      <div class="form-group flex justify-content-center row w-100">
+          <label class="col-form-label col1">Duração:</label>
+          <label class="col-form-label col2">{{calcDuration}}</label>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 p-1 orderingPanel">
+    <div class="col-sm-12 box-hpe">
+        <label class="row col-form-label"><b>Tipo de Agrupamento</b></label>
+        <div class="d-flex justify-content-center w-100 flex-row">
+          <input type="radio" name="bb" value="option1">
+          <label class="col-form-label">Origem</label>
+          <input type="radio" name="bb" value="option2">
+          <label class="col-form-label">Destino</label>
+          <input type="radio" name="bb" value="option3">
+          <label class="col-form-label">Subscriber</label>
+          <input type="radio" name="bb" value="option4">
+          <label class="col-form-label">Data</label>
+          <input type="radio" name="bb" value="option5">
+          <label class="col-form-label">Hora</label>
+        </div>
+    </div>
+  </div>
+</div>
+
+<div style="display:flex; padding: 0 2.65%;" class="tableInfoPanel customSmall groupingPanel">
+    <div class="col-sm-12 p-1">
+      <div class="col-sm-12 box-hpe" style="height:60px">
+          <label class="row col-form-label"><b>Possíveis ações</b></label>
+          <div class="d-flex justify-content-center w-100 flex-row">
+            <input type="radio" name="aa" value="option1">
+            <label class="col-form-label">Bloquear</label>
+            <input type="radio" name="aa" value="option2">
+            <label class="col-form-label">Incluir em grupo de investigação</label>
+            <input type="radio" name="aa" value="option3">
+            <label class="col-form-label">Incluir em lista de alarme</label>
+            <input type="radio" name="aa" value="option4">
+            <label class="col-form-label">Incluir no perfil de clientes</label>
+            <input type="radio" name="aa" value="option5">
+            <label class="col-form-label">Realizar deleção lógica dos números</label>
+            <button type="button" class="btn btn-info btn-sm ml-4" style="margin-top: -4px">Confirmar</button>
+          </div>
+      </div>
+    </div>
+  </div>
+
+<p-table #dt [columns]="cols" [value]="cdrs" [lazy]="true" (onLazyLoad)="loadCdrsLazy($event)" [paginator]="true"
+  [rows]="13" [scrollable]="true" scrollHeight="500px" [style]="{width: tableWidth, padding: '0 2.8%'}" [totalRecords]="totalRecords"
+  [loading]="loading">
+
+  <ng-template pTemplate="colgroup" let-columns>
+    <colgroup>
+      <col *ngFor="let col of columns">
+    </colgroup>
+  </ng-template>
+
+  <ng-template pTemplate="emptymessage">
+    <div class="p-table-no-message-info">Não há dados para essa pesquisa</div>
+  </ng-template>
+  <ng-template pTemplate="caption">
+    <div class="ui-helper-clearfix">
+      <div style="text-align: right">
+          <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+          <input type="text" pInputText size="50" placeholder="Global Filter" style="width:auto"> <!--(input)="dt.filterGlobal($event.target.value, 'contains')"-->
+      </div>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="header" let-columns>
+    <tr>
+      <ng-container *ngFor="let col of columns">
+        <th *ngIf="!(col.type ==='id')" pResizableColumn [pSortableColumn]="(col.field === 'totalCharge' ? col.field : '')" [style.width]="col.width">
+          <input [hidden]="!(col.field === 'subscriber')" pInputText type="text" (click)="$event.stopPropagation()" [style.padding.em]="0.12">
+          <!-- <input (click)="$event.stopPropagation()"  *ngIf="col.field === 'totalCalls'" pInputText type="text" (keyup.enter)="columnFilter($event, col.field)"> -->
+          {{col.header}}
+          <p-sortIcon [hidden]="!(col.field === 'totalCharge')" [field]="col.field" ariaLabel="Activate to sort" ariaLabelDesc="Activate to sort in descending order" ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon>
+        </th>
+      </ng-container>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-rowData let-columns="columns">
+    <tr>
+      <ng-container *ngFor="let col of columns">
+        <td *ngIf="!(col.type ==='id')" class="ui-resizable-column" [style.width]="col.width">
+          <span [hidden]="(col.type === 'link')">{{convert(rowData[col.field], col.type)}}</span>
+          <a [hidden]="!(col.type === 'link')" (click)="goToDetailCdrPage(rowData)">{{rowData[col.field]}}</a>
+        </td>
+      </ng-container>
+    </tr>
+  </ng-template>
+</p-table>
+
+<button type="button" (click)="back()" style="margin-left:4%" class="btn btn-info btn-sm mt-2">Voltar</button>

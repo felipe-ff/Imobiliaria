@@ -1,0 +1,84 @@
+<div id="wrap">
+    <div class="d-flex flex-column">
+        <div id="wrapper">
+          <nav class="navbar navbar-expand navbar-dark flex-row bd-navbar" [ngStyle]="{'width.px': widthExp}">
+             <!-- <img class="navbar-brand" src="../assets/img/hp-logo.png" alt="logo" width="38px" height="38px"> -->
+
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto" style="margin-right:15%">
+                  <li class="nav-item">
+                    <a class="nav-link" routerLink="/list-cdr">Fale Conosco</a>
+                  </li>
+                  <li class="nav-item facebook">
+                    <a href="https://www.facebook.com/L%C3%ADder-Im%C3%B3veis-1611329972212003/" target="_blank" shape="rect"><span class="fa fa-facebook-f"></span></a>
+                  </li>
+                  <!--<li class="nav-item">
+                    <a class="nav-link" routerLink="/report" routerLinkActive="active">Relatórios</a>
+                  </li> -->
+                </ul>
+                <!--
+                <form class="form-inline my-2 my-lg-0">
+                  <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+                -->
+              </div>
+            </nav>
+        </div>
+
+        <div class="address">
+          <div>
+            <img src="../assets/img/logo.PNG" alt="logo" > <!--width="38px" height="38px"-->
+          </div>
+
+          <div class="address-box">
+            <div class="icon-box mr-3"><span class="fa fa-map-marker" style="color:red;font-size:22px"></span></div>
+            <div class="address-text">Avenida Dr. Delfim Moreira, 478<br>Centro, Santa Rita do Sapucaí</div>
+          </div>
+
+          <div class="address-box">
+            <div class="icon-box mr-3"><span class="fa fa-phone" style="color:red;font-size:22px"></span></div>
+            <div class="address-text">(35) 3471-1600 - (35) 3471-7522<br>email@email.com.br</div>
+          </div>
+
+        </div>
+
+        <form [formGroup]="searchCdrForm" id="CdrSearchForm" novalidate>
+          <div class="row orderingPanel orderingPanelFirst">
+            <div class="col-sm-12 box-hpe" style="height:60px">
+              <div class="d-flex justify-content-center w-100 flex-row">
+                <p-selectButton [options]="durationTypeOptions" optionLabel="name" formControlName="typeDuration"></p-selectButton>
+                <select class="form-control large">
+                  <option value="0">Teste</option>
+                  <option value="1">Residencial</option>
+                  <option value="2">Comercial</option>
+                </select>
+                <select class="form-control large">
+                  <option value="0">Bairro</option>
+                  <option value="1">Centro</option>
+                  <option value="2">Inatel</option>
+                </select>
+                <div style="margin-left: 20px">
+                  <div class="range">Valor: {{'R$ ' + f.rangeValues.value[0] + ' - ' +  (f.rangeValues.value[1] < 5000 ? 'R$ ' + f.rangeValues.value[1] : 'Max')}}</div>
+                  <p-slider formControlName="rangeValues" [step]="100" [min]="0" [max]="5000" [style]="{'width':'14em'}" [range]="true"></p-slider>
+                </div>
+                <button type="button" class="btn btn-danger" routerLink="/list-houses">Buscar</button>
+              </div>
+            </div>
+          </div>
+        </form>
+
+        <!-- main area-->
+        <div class="mainarea pl-4 pr-2" style="width:99%">
+            <div #main id="main" class="h-100 d-flex" ng-view>
+                <router-outlet class="router-outlet"></router-outlet>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--<div id="footer" [ngStyle]="{'width.px': widthExp}">
+    <div class="container">
+        <p>Version: {{version}}</p>
+    </div>
+</div>-->

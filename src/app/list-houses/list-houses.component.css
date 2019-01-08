@@ -1,0 +1,9 @@
+.ui-card-content {
+  display: flex;
+}
+
+.details-btn {
+  position: absolute;
+  margin-left: 630px;
+  margin-top: 160px;
+}

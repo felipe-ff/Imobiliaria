@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { CdrService } from '../service/cdr.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-list-houses',
@@ -9,25 +10,37 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ListHousesComponent implements OnInit {
 
-  houseList = [1, 2, 3];
-  selectedFile: File = null;
+  houseList;
 
-  constructor(private http: HttpClient) { }
+  constructor(private cdrService: CdrService, private router: Router) { }
 
   ngOnInit() {
+    this.listHouses();
   }
 
-  onFileSelected(event) {
-    this.selectedFile = <File>event.target.files[0];
+  listHouses() {
+    this.cdrService.getBooks()
+    .subscribe( data => {
+      console.log(data.items);
+      this.houseList = data.items;
+    });
   }
 
-  onUpload() {
-    const fd = new FormData();
-    fd.append('image', this.selectedFile, this.selectedFile.name);
-    this.http.post('http://localhost:8080/books/add', fd)
-      .subscribe(res => {
-        console.log(res);
-      });
+  navigate(id: number) {
+    this.router.navigate(['/detail-house', id]);
+  }
+
+  delete(id: number) {
+    this.cdrService.deleteBook(id)
+      .subscribe( data => {
+        console.log(data);
+        this.listHouses();
+      },
+      error => {
+        this.listHouses();
+      }
+      );
+
   }
 
 }

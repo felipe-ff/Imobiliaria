@@ -37,6 +37,8 @@ import { FilterCdrComponent } from './cdr/filter-cdr/filter-cdr.component';
 import { ListPresetComponent } from './list-preset/list-preset.component';
 import {ProgressSpinnerModule} from 'primeng/progressspinner';
 import { ListHousesComponent } from './list-houses/list-houses.component';
+import { DetailHouseComponent } from './detail-house/detail-house.component';
+import { AddHouseComponent } from './add-house/add-house.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +54,9 @@ import { ListHousesComponent } from './list-houses/list-houses.component';
     CdrChartComponent,
     FilterCdrComponent,
     ListPresetComponent,
-    ListHousesComponent
+    ListHousesComponent,
+    DetailHouseComponent,
+    AddHouseComponent
   ],
   imports: [
     BrowserModule,

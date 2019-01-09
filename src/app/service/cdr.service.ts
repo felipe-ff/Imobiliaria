@@ -13,13 +13,20 @@ export class CdrService {
   baseUrl;
 
   setLocation() {
-    const port = isDevMode() ? '8123' : location.port;
-
-    this.baseUrl = 'http://localhost:' + port + '/hpe/cdrs';
+    const port = isDevMode() ? '8080' : '8080';
+    this.baseUrl = 'http://localhost:' + port + '/api/books';
   }
 
-  getCdrs() {
+  getBooks() {
     return this.http.get<any>(this.baseUrl);
+  }
+
+  deleteBook(id: number) {
+    return this.http.delete(this.baseUrl + '/' + id);
+  }
+
+  getBookById(id: number) {
+    return this.http.get(this.baseUrl + '/' + id);
   }
 
   getCdrsWithPaging(filter: any, page: string, size: string) {

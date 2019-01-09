@@ -1,0 +1,10 @@
+#select-btn:focus, #select-btn:active {
+  outline: none !important;
+  box-shadow: none;
+}
+
+#select-btn {
+  position: absolute !important;
+  top: -8px !important;
+  left: -8px !important;
+}

@@ -73,6 +73,13 @@ label {
   align-self: center;
 }
 
+.log-btn {
+  display: flex;
+  height: 23px;
+  align-self: center;
+  align-items: center;
+}
+
 .address-text {
   position: relative;
   line-height: 20px;

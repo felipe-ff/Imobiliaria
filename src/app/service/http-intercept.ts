@@ -4,18 +4,18 @@ import { UtilityService } from './utility.service';
 import { Injectable } from '@angular/core';
 import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
+import { Globals } from './globals';
 
 @Injectable()
 export class HttpIntercept implements HttpInterceptor {
 
-    constructor(private utilsService: UtilityService) {
+    constructor(private utilsService: UtilityService, private globals: Globals) {
     }
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
         /*Resolve new headers*/
-        const headers = new HttpHeaders();
+        let headers;
        /*  if (req.url.indexOf('/assets/') < 0) {
             let token = window.localStorage.getItem('accessToken');
             let userId = window.localStorage.getItem('userId');
@@ -26,17 +26,27 @@ export class HttpIntercept implements HttpInterceptor {
             }
         } */
 
-        /*Clone the request to add the new header.*/
-        const authReq = req.clone({
-            headers: headers
-        });
+        const token = localStorage.getItem('token');
+
+        if (token) {
+              headers = req.clone({
+                headers: req.headers.set('Authorization',
+                    'Bearer ' + token)
+            });
+        } else {
+            headers = req;
+        }
 
         /*Send the newly created request*/
-        return next.handle(authReq).pipe(tap(
-            (resp: any) => {},
+        return next.handle(headers).pipe(tap(
+            (resp: any) => {
+              if (resp && resp.body) {
+                this.globals.loggedIn = resp.body.loggedIn;
+              }
+            },
             (err: any) => {
+              console.log(err);
                 if (err instanceof HttpErrorResponse) {
-
                     switch (err.status) {
                         case 0 :
                             this.utilsService.toastr.errorToastr('Servidor fora do ar ou em endereço diferente');

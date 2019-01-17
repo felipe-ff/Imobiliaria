@@ -11,22 +11,29 @@ export class CdrService {
   }
 
   baseUrl;
+  baseUrlApi;
 
   setLocation() {
     const port = isDevMode() ? '8080' : '8080';
-    this.baseUrl = 'http://localhost:' + port + '/api/books';
+    this.baseUrlApi = 'http://localhost:' + port + '/api/books';
+    this.baseUrl = 'http://localhost:' + port;
   }
 
   getBooks() {
-    return this.http.get<any>(this.baseUrl);
+    return this.http.get<any>(this.baseUrlApi);
+  }
+
+  login(user) {
+    return this.http.post(this.baseUrlApi + '/login', user);
+    //return this.http.get<any>(this.baseUrl + '/auth/login');
   }
 
   deleteBook(id: number) {
-    return this.http.delete(this.baseUrl + '/' + id);
+    return this.http.delete(this.baseUrlApi + '/' + id);
   }
 
   getBookById(id: number) {
-    return this.http.get(this.baseUrl + '/' + id);
+    return this.http.get(this.baseUrlApi + '/' + id);
   }
 
   getCdrsWithPaging(filter: any, page: string, size: string) {

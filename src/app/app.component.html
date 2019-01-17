@@ -6,6 +6,10 @@
 
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto" style="margin-right:15%">
+                  <li class="nav-item log-btn">
+                    <input *ngIf="!authService.isLoggedIn()" type="button" class="btn btn-primary btn-sm" value="log in" (click)="login()">
+                    <input *ngIf="authService.isLoggedIn()" type="button" class="btn btn-danger btn-sm" value="logout" (click)="logout()">
+                  </li>
                   <li class="nav-item">
                     <a class="nav-link" routerLink="/list-cdr">Fale Conosco</a>
                   </li>

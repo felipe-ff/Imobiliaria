@@ -3,6 +3,7 @@ import { UtilityService } from './service/utility.service';
 import { ChangeDetectorRef } from '@angular/core';
 import { VERSION } from '../environments/version';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { AuthService } from './service/AuthService';
 
 @Component({
   selector: 'app-root',
@@ -21,7 +22,8 @@ export class AppComponent implements OnInit, AfterViewInit {
   durationTypeOptions: { name: string , code: string }[];
   rangeValues: number[] = [20, 80];
 
-  constructor(private util: UtilityService, private cdRef: ChangeDetectorRef, private formBuilder: FormBuilder) { }
+  constructor(private util: UtilityService, public authService: AuthService, private cdRef: ChangeDetectorRef,
+      private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.searchCdrForm = this.initializeForm();
@@ -46,6 +48,19 @@ export class AppComponent implements OnInit, AfterViewInit {
       rangeValues: [[0, 4000]]
     },
     );
+  }
+
+  logout() {
+    this.authService.logout();
+  }
+
+  loggedIn() {
+    return this.authService.isLoggedIn();
+  }
+
+  login() {
+    const user = {user: {email: 'felipe.ferraz18@gmail.com', password: '123'}};
+    this.authService.login(user);
   }
 
   get f() { return this.searchCdrForm.controls; }

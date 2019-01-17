@@ -1,4 +1,4 @@
-<button type="button" routerLink="/add-house" class="btn btn-danger btn-sm mt-2 ml-2">Adicionar Novo</button>
+<button type="button" *ngIf="authService.isLoggedIn()" routerLink="/add-house" class="btn btn-danger btn-sm mt-2 ml-2">Adicionar Novo</button>
 
 <div *ngFor="let house of houseList; let i = index">
   <p-card header="CASA" subheader="Santa Rita do Sapucaí" [style]="{width: '760px', margin: '18px'}" styleClass="ui-card-shadow">
@@ -23,7 +23,7 @@
       <div>Locação</div>
       <div style="color:#019DA5; font-size:16px">R$ 1900,00</div>
     </div>
-    <button type="button" (click)="delete(house.id)" class="btn btn-danger btn-sm delete-btn"><i class="fa fa-trash"></i></button>
+    <button type="button" *ngIf="authService.isLoggedIn()" (click)="delete(house.id)" class="btn btn-danger btn-sm delete-btn"><i class="fa fa-trash"></i></button>
     <button type="button" [routerLink]="['/detail-house']" [queryParams]="{ id: house.id}" class="btn btn-danger btn-sm details-btn">Ver detalhes</button>
   </p-card>
 </div>

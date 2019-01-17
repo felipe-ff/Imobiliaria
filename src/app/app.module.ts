@@ -12,6 +12,7 @@ import { ListCdrComponent } from './cdr/list-cdr/list-cdr.component';
 import { GroupService } from './service/group.service';
 import { PresetService } from './service/preset.service';
 import { CdrService } from './service/cdr.service';
+import { AuthService } from './service/AuthService';
 import { UtilityService } from './service/utility.service';
 import { CalendarModule } from 'primeng/calendar';
 import { SliderModule } from 'primeng/slider';
@@ -39,6 +40,7 @@ import {ProgressSpinnerModule} from 'primeng/progressspinner';
 import { ListHousesComponent } from './list-houses/list-houses.component';
 import { DetailHouseComponent } from './detail-house/detail-house.component';
 import { AddHouseComponent } from './add-house/add-house.component';
+import { Globals } from './service/globals';
 
 @NgModule({
   declarations: [
@@ -79,7 +81,8 @@ import { AddHouseComponent } from './add-house/add-house.component';
     RadioButtonModule,
     InputTextModule
   ],
-  providers: [GroupService, PresetService, {provide: HTTP_INTERCEPTORS, useClass: HttpIntercept, multi: true}, CdrService, UtilityService],
+  providers: [GroupService, Globals, PresetService, {provide: HTTP_INTERCEPTORS, useClass: HttpIntercept, multi: true}, CdrService,
+    AuthService, UtilityService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

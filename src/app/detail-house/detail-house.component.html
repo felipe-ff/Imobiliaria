@@ -10,22 +10,34 @@
 -->
 <div class="d-flex mt-2" style="width:1000px">
   <div id="images-div" style="width:60%">
-      <div><img src="{{house.imageUrl}}" width="300px" height="180px"></div>
+      <div><img src="{{house.imageUrl}}" (click)="showDialog(house.imageUrl)" target="imgbox" width="300px" height="180px"></div>
   </div>
 
   <div id="description-div" style="width:40%">
       <div class="d-flex flex-column ml-4 mr-2" style="width:310px">
         <div style="margin-left:-2px">
-          <ul>
-            <li>2 dormitórios</li>
-            <li>1 sala</li>
-            <li>1 banheiro</li>
-            <li>1 vaga</li>
-            <li>1 cozinha</li>
-          </ul>
+            <div><span class="fa fa-long-arrow-right" style="color:red;font-size:14px"></span> 2 dormitórios </div>
+            <div><span class="fa fa-long-arrow-right" style="color:red;font-size:14px"></span> 1 sala </div>
+            <div><span class="fa fa-long-arrow-right" style="color:red;font-size:14px"></span> 1 banheiro </div>
+            <div><span class="fa fa-long-arrow-right" style="color:red;font-size:14px"></span> 1 vaga </div>
+            <div><span class="fa fa-long-arrow-right" style="color:red;font-size:14px"></span> 1 cozinha </div>
         </div>
       </div>
   </div>
 
 </div>
 <button type="button" routerLink="/list-houses" class="btn btn-danger btn-sm mt-2 ml-1">Voltar</button>
+
+<p-dialog #presetDiag [showHeader]="false" [(visible)]="displayDialog" [modal]="true" [responsive]="true" [minY]="70"
+    [baseZIndex]="10000" [height]="heightExp" [width]="widthExp">
+
+    <div class="d-flex flex-row-reverse" cWidth="100%">
+      <span class="fa fa-close close-dialog" (click)="displayDialog = false"></span>
+    </div>
+
+    <div style="position: relative" style="max-width: 100%; max-height: 90%">
+      <span class="fa fa-angle-left next-btn" style="color:red;font-size:60px"></span>
+      <img src="{{currentImgUrl}}" style="margin-left: 30px; margin-right: 5px" [width]="widthExp -80" [height]="heightExp - 50">
+      <span class="fa fa-angle-right next-btn" style="color:red;font-size:60px"></span>
+    </div>
+</p-dialog>

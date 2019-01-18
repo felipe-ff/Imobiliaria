@@ -33,7 +33,7 @@ export class CdrService {
   }
 
   getBookById(id: number) {
-    return this.http.get(this.baseUrlApi + '/' + id);
+    return this.http.get<any>(this.baseUrlApi + '/' + id);
   }
 
   getCdrsWithPaging(filter: any, page: string, size: string) {

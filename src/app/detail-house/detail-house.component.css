@@ -8,3 +8,28 @@
   top: -8px !important;
   left: -8px !important;
 }
+
+.next-btn {
+  position: absolute !important;
+  margin-top: 25%;
+}
+
+.close-dialog {
+  margin-right: 18px;
+  color: red;
+  cursor: pointer;
+  font-size: 22px;
+  margin-top: -5px;
+  margin-bottom: 3px;
+}
+
+.ui-widget-overlay {
+  background-color: rgba(0, 0, 0, 0.88) !important;
+}
+
+.ui-dialog .ui-dialog-content {
+    background-color: inherit !important;
+    color: #333333 !important;
+    border: none !important;
+    padding: 0 0.5em !important;
+}

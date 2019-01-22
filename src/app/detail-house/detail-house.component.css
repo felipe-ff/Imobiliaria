@@ -33,3 +33,8 @@
     border: none !important;
     padding: 0 0.5em !important;
 }
+
+.arrow-image {
+  color: red;
+  font-size: 13px;
+}

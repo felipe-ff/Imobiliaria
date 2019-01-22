@@ -16,7 +16,8 @@ export class DetailHouseComponent implements OnInit {
   selectedFile: File = null;
   displayDialog = false;
   loading = false;
-  house: any = {};
+  house = [];
+  imgUrl = '';
   widthExp = document.documentElement.clientWidth - 100;
   heightExp = document.documentElement.clientHeight - 50;
   currentImgUrl;
@@ -35,10 +36,11 @@ export class DetailHouseComponent implements OnInit {
         console.log(data);
         this.house = data;
         const img = new Image();
-          img.addEventListener('load', function() {
-              //alert( this.naturalWidth + ' ' + this.naturalHeight );
-          });
-          img.src = data.imageUrl;
+      /* img.addEventListener('load', function() {
+          //alert( this.naturalWidth + ' ' + this.naturalHeight );
+      });
+      img.src = data.imageUrl; */
+        //this.imgUrl = data.imageUrl;
         });
     });
   }

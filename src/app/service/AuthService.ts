@@ -1,18 +1,27 @@
 import * as moment from 'moment';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { isDevMode } from '@angular/core';
 
 @Injectable()
 export class AuthService {
 
     constructor(private http: HttpClient) {
+      this.setLocation();
+    }
 
+    baseUrl;
+    baseUrlApi;
+
+    setLocation() {
+      const port = isDevMode() ? '8080' : '';
+      const url = isDevMode() ? 'http://localhost:' : 'https://poised-breaker-227417.appspot.com';
+      this.baseUrlApi = url + port + '/api/books';
+      this.baseUrl = url + port;
     }
 
     login(user) {
-      //console.log(user);
-      //return this.http.post(this.baseUrlApi + '/login', user);
-        return this.http.post('http://localhost:8080/api/books/login', user)
+        return this.http.post(this.baseUrlApi + '/login', user)
             .subscribe(res => this.setSession(res), error => { console.log(error); });
     }
 

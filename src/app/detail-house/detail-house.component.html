@@ -8,25 +8,32 @@
     <p-progressSpinner *ngIf="loading"></p-progressSpinner>
   </div>
 -->
-<div class="d-flex mt-2" style="width:1000px">
-  <div id="images-div" style="width:60%">
-      <div><img src="{{house.imageUrl}}" (click)="showDialog(house.imageUrl)" target="imgbox" width="300px" height="180px"></div>
-  </div>
+<div class="d-flex flex-column mt-2" style="width:100%">
 
-  <div id="description-div" style="width:40%">
-      <div class="d-flex flex-column ml-4 mr-2" style="width:310px">
-        <div style="margin-left:-2px">
-            <div><span class="fa fa-long-arrow-right" style="color:red;font-size:14px"></span> 2 dormitórios </div>
-            <div><span class="fa fa-long-arrow-right" style="color:red;font-size:14px"></span> 1 sala </div>
-            <div><span class="fa fa-long-arrow-right" style="color:red;font-size:14px"></span> 1 banheiro </div>
-            <div><span class="fa fa-long-arrow-right" style="color:red;font-size:14px"></span> 1 vaga </div>
-            <div><span class="fa fa-long-arrow-right" style="color:red;font-size:14px"></span> 1 cozinha </div>
+  <div id="description-div" style="width:100%; border-bottom: 1px solid #f1f1f1">
+      <div class="d-flex flex-column ml-3 mr-2">
+        <div class="d-flex">
+          <label style="margin-right:6px;font-size:20px">Tipo:</label>
+          <label style="font-size:20px; color:red">Locação</label>
+        </div>
+        <div style="margin-bottom:10px">
+            <div><span class="fa fa-long-arrow-right mr-1 arrow-image"></span>2 dormitórios</div>
+            <div><span class="fa fa-long-arrow-right mr-1 arrow-image"></span>1 sala</div>
+            <div><span class="fa fa-long-arrow-right mr-1 arrow-image"></span>1 banheiro</div>
+            <div><span class="fa fa-long-arrow-right mr-1 arrow-image"></span>1 vaga</div>
+            <div><span class="fa fa-long-arrow-right mr-1 arrow-image"></span>1 cozinha</div>
         </div>
       </div>
   </div>
 
+  <div id="images-div" class="d-flex flex-wrap justify-content-center mt-3" style="width:100%">
+    <div *ngFor="let h of house; let i = index" style="margin-right: 2px; margin-top: 2px">
+      <div><img src="{{h.imageUrl}}" (click)="showDialog(h.imageUrl)" target="imgbox" style="max-width:380px;height:230px"></div> <!--width="380px" height="230px"-->
+    </div>
+  </div>
+
 </div>
-<button type="button" routerLink="/list-houses" class="btn btn-danger btn-sm mt-2 ml-1">Voltar</button>
+<!--<button type="button" routerLink="/list-houses" class="btn btn-danger btn-sm mt-2 ml-1">Voltar</button>-->
 
 <p-dialog #presetDiag [showHeader]="false" [(visible)]="displayDialog" [modal]="true" [responsive]="true" [minY]="70"
     [baseZIndex]="10000" [height]="heightExp" [width]="widthExp">

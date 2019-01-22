@@ -14,9 +14,10 @@ export class CdrService {
   baseUrlApi;
 
   setLocation() {
-    const port = isDevMode() ? '8080' : '8080';
-    this.baseUrlApi = 'http://localhost:' + port + '/api/books';
-    this.baseUrl = 'http://localhost:' + port;
+    const port = isDevMode() ? '8080' : '';
+    const url = isDevMode() ? 'http://localhost:' : 'https://poised-breaker-227417.appspot.com';
+    this.baseUrlApi = url + port + '/api/books';
+    this.baseUrl = url + port;
   }
 
   getBooks() {
@@ -34,6 +35,10 @@ export class CdrService {
 
   getBookById(id: number) {
     return this.http.get<any>(this.baseUrlApi + '/' + id);
+  }
+
+  addBook(formData) {
+    return this.http.post(this.baseUrl + '/books/add', formData);
   }
 
   getCdrsWithPaging(filter: any, page: string, size: string) {

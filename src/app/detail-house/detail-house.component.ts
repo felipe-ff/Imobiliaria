@@ -16,11 +16,13 @@ export class DetailHouseComponent implements OnInit {
   selectedFile: File = null;
   displayDialog = false;
   loading = false;
-  house = [];
+  houseImageList = [];
   imgUrl = '';
   widthExp = document.documentElement.clientWidth - 100;
   heightExp = document.documentElement.clientHeight - 50;
   currentImgUrl;
+  currentImgIndex;
+  propList = [];
 
   @ViewChild('presetDiag') presetDiag: Dialog;
 
@@ -34,7 +36,8 @@ export class DetailHouseComponent implements OnInit {
       this.cdrService.getBookById(+id)
       .subscribe( data => {
         console.log(data);
-        this.house = data;
+        this.houseImageList = data;
+        this.listObjectProps();
         const img = new Image();
       /* img.addEventListener('load', function() {
           //alert( this.naturalWidth + ' ' + this.naturalHeight );
@@ -67,16 +70,66 @@ export class DetailHouseComponent implements OnInit {
     }
   }
 
-  showDialog(imageUrl) {
+  showDialog(imageUrl, i) {
     this.displayDialog = true;
     this.currentImgUrl = imageUrl;
+    this.currentImgIndex = i;
     setTimeout(() => { this.presetDiag.center(); }, 200);
+  }
+
+  nextImage() {
+    this.currentImgIndex++;
+    if (!this.houseImageList[this.currentImgIndex]) {
+      this.currentImgIndex = 0;
+    }
+    this.currentImgUrl = this.houseImageList[this.currentImgIndex].imageUrl;
+  }
+
+  prevImage() {
+    this.currentImgIndex--;
+    if (!this.houseImageList[this.currentImgIndex]) {
+      this.currentImgIndex = this.houseImageList.length - 1;
+    }
+    this.currentImgUrl = this.houseImageList[this.currentImgIndex].imageUrl;
   }
 
   @HostListener('window:resize', ['$event'])
   onResize(event) {
     this.widthExp = document.documentElement.clientWidth - 100;
     this.heightExp = document.documentElement.clientHeight - 50;
+  }
+
+  @HostListener('document:keydown', ['$event']) onKeydownHandler(event: KeyboardEvent) {
+    if (event.keyCode === 27) { //Escape keycode
+      this.displayDialog = false;
+    }
+    if (event.keyCode === 37) { //left arrow keycode
+      this.prevImage();
+    }
+    if (event.keyCode === 39) { //right arrow keycode
+      this.nextImage();
+    }
+  }
+
+  listObjectProps() {
+    const element = this.houseImageList[0];
+    for (const property in element) {
+      if (element.hasOwnProperty(property)) {
+        switch(property) {
+          case 'dorm':
+            this.propList.push({name: 'Dormitórios', value: element[property], icon: 'fa fa-bed'});
+            break;
+
+          case 'kitchen':
+            this.propList.push({name: 'Cozinha', value: element[property], icon: 'fa fa-cutlery'});
+            break;
+
+          case 'garage':
+            this.propList.push({name: 'Vagas na garagem', value: (element[property]), icon: 'fa fa-car'});
+            break;
+        }
+      }
+    }
   }
 
 }

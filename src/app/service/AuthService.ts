@@ -21,17 +21,18 @@ export class AuthService {
     }
 
     login(user) {
-        return this.http.post(this.baseUrlApi + '/login', user)
-            .subscribe(res => this.setSession(res), error => { console.log(error); });
+        return this.http.post(this.baseUrlApi + '/login', user).subscribe(
+          res => this.setSession(res), error => {
+            console.log(error);
+          });
     }
 
     private setSession(authResult) {
-       console.log(authResult);
-        //const expiresAt = moment().add(authResult.expiresIn, 'second');
+        const expiresAt = moment().add(300, 'second');
 
         localStorage.setItem('token', authResult.user.token);
         console.log(localStorage.getItem('token'));
-        //localStorage.setItem('expires_at', JSON.stringify(expiresAt.valueOf()) );
+        localStorage.setItem('expires_at', JSON.stringify(expiresAt.valueOf()) );
     }
 
     logout() {
@@ -40,9 +41,7 @@ export class AuthService {
     }
 
     public isLoggedIn() {
-        return true;
-        //return localStorage.getItem('token') != null;
-        //return moment().isBefore(this.getExpiration());
+        return localStorage.getItem('token') != null && moment().isBefore(this.getExpiration());
     }
 
     isLoggedOut() {

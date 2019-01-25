@@ -38,3 +38,22 @@
   color: red;
   font-size: 13px;
 }
+
+.detail-card-image {
+  color: #FF7900;
+  font-size: 21px;
+  margin-bottom: 4px;
+}
+
+.detail-card-label {
+  font-size: 13px;
+  color: #253d4a;
+  /*text-transform: uppercase;*/
+  font-weight: 700;
+}
+
+.detail-card-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

@@ -41,7 +41,6 @@ export class ListHousesComponent implements OnInit {
         console.log(headers);
       }
       );
-
   }
 
 }

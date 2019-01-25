@@ -4,8 +4,8 @@ threadsafe: true
 
 handlers:
 - url: /(.*\.(gif|png|jpeg|jpg|css|js|ico|woff|otf|ttf|eot|svg))$
-  static_files: imobiliaria/\1
-  upload: imobiliaria/(.*)
+  static_files: dist/imobiliaria/\1
+  upload: dist/imobiliaria/(.*)
 - url: /(.*)
-  static_files: imobiliaria/index.html
-  upload: imobiliaria/index.html
+  static_files: dist/imobiliaria/index.html
+  upload: dist/imobiliaria/index.html

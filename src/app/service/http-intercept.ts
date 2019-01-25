@@ -4,12 +4,12 @@ import { UtilityService } from './utility.service';
 import { Injectable } from '@angular/core';
 import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Globals } from './globals';
+import { AuthService } from './AuthService';
 
 @Injectable()
 export class HttpIntercept implements HttpInterceptor {
 
-    constructor(private utilsService: UtilityService, private globals: Globals) {
+    constructor(private utilsService: UtilityService, private authService: AuthService) {
     }
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -29,10 +29,7 @@ export class HttpIntercept implements HttpInterceptor {
         const token = localStorage.getItem('token');
 
         if (token) {
-              headers = req.clone({
-                headers: req.headers.set('Authorization',
-                    'Bearer ' + token)
-            });
+              headers = req.clone({headers: req.headers.set('Authorization', 'Bearer ' + token)});
         } else {
             headers = req;
         }
@@ -41,7 +38,7 @@ export class HttpIntercept implements HttpInterceptor {
         return next.handle(headers).pipe(tap(
             (resp: any) => {
               if (resp && resp.body) {
-                this.globals.loggedIn = resp.body.loggedIn;
+                //this.globals.loggedIn = resp.body.loggedIn;
               }
             },
             (err: any) => {
@@ -57,6 +54,14 @@ export class HttpIntercept implements HttpInterceptor {
                         break;
                         case 400 :
                             this.utilsService.toastr.errorToastr(err.error.message);
+                            break;
+                        case 401 :
+                            if (err.statusText === 'Unauthorized') {
+                              localStorage.removeItem('token');
+                              this.utilsService.toastr.errorToastr('Sessão expirada, por favor refaça o login!');
+                            } else {
+                              this.utilsService.toastr.errorToastr(err.error.message);
+                            }
                             break;
                         case 404 :
                             this.utilsService.toastr.errorToastr(err.error.message ? err.error.message : 'Servidor não encontrado');

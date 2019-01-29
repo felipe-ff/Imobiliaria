@@ -11,32 +11,58 @@
 
 .next-btn {
   position: absolute !important;
-  margin-top: 25%;
+  margin-top: 38.5vh;
+  margin-left: -14px;
+}
+
+.prev-btn {
+  position: absolute !important;
+  margin-top: 38.5vh;
+  margin-left: 2px;
 }
 
 .close-dialog {
-  margin-right: 18px;
-  color: red;
+  margin-right: 35px;
   cursor: pointer;
-  font-size: 22px;
   margin-top: -5px;
-  margin-bottom: 3px;
+  margin-bottom: 4px;
+  font-size: 15px;
+  color: white;
 }
 
-.ui-widget-overlay {
+.close-image {
+  color: black;
+  font-size: 22px;
+}
+
+/*.ui-widget-overlay {
+  background-color: rgba(0, 0, 0, 0.88) !important;
+}
+*/
+
+.mystyle {
   background-color: rgba(0, 0, 0, 0.88) !important;
 }
 
-.ui-dialog .ui-dialog-content {
-    background-color: inherit !important;
-    color: #333333 !important;
-    border: none !important;
-    padding: 0 0.5em !important;
+#galeryDiag .ui-dialog .ui-dialog-content {
+  background-color: inherit !important;
+  color: #333333 !important;
+  border: none !important;
+  padding: 0 0.5em !important;
 }
 
-.arrow-image {
-  color: red;
-  font-size: 13px;
+.next-arrow-image {
+  color:black;
+  font-size:26px;
+  margin-left:14px;
+  margin-top: 4px;
+}
+
+.prev-arrow-image {
+  color:black;
+  font-size:26px;
+  margin-left:10px;
+  margin-top: 4px;
 }
 
 .detail-card-image {
@@ -56,4 +82,25 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.circle {
+  height: 37px;
+  width: 37px;
+  border-radius: 50%;
+  cursor:pointer;
+  display: inline-block;
+  border: 1px solid #272828;
+  /*background: #272828;*/
+  background: white;
+}
+
+.edit-property {
+  margin-left: 140px;
+  margin-top: -16px;
+  font-size: 20px;
+  /* position: absolute; */
+  cursor: pointer;
+  /* height: 0; */
+  display: flex;
 }

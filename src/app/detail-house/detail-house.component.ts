@@ -4,6 +4,7 @@ import {Router, ActivatedRoute} from '@angular/router';
 import 'rxjs/add/operator/filter';
 import { CdrService } from '../service/cdr.service';
 import { Dialog } from 'primeng/dialog';
+import { AuthService } from '../service/AuthService';
 
 @Component({
   selector: 'app-detail-house',
@@ -15,28 +16,38 @@ export class DetailHouseComponent implements OnInit {
 
   selectedFile: File = null;
   displayDialog = false;
+  displayPropDialog = false;
   loading = false;
-  houseImageList = [];
+  houseImageList: any = [];
+  house;
   imgUrl = '';
   widthExp = document.documentElement.clientWidth - 100;
   heightExp = document.documentElement.clientHeight - 50;
   currentImgUrl;
   currentImgIndex;
   propList = [];
+  dialogObj: any = {};
+  value: number;
 
   @ViewChild('presetDiag') presetDiag: Dialog;
 
   constructor(private http: HttpClient, private router: Router, private route: ActivatedRoute,
-             private cdrService: CdrService) { }
+             private cdrService: CdrService, public auth: AuthService) { }
 
   ngOnInit() {
+    this.initialize();
+  }
+
+  initialize() {
+    this.houseImageList = [];
+    this.propList = [];
     this.route.queryParams.subscribe(params => {
       const id = params['id'];
-      console.log(id);
       this.cdrService.getBookById(+id)
       .subscribe( data => {
-        console.log(data);
+        //console.log(data);
         this.houseImageList = data;
+        this.house = this.houseImageList[0];
         this.listObjectProps();
         const img = new Image();
       /* img.addEventListener('load', function() {
@@ -70,11 +81,40 @@ export class DetailHouseComponent implements OnInit {
     }
   }
 
+  update() {
+    const obj = this.houseImageList[0];
+    delete obj.bookId;
+    delete obj.idImagesUrl;
+    delete obj.imageUrl;
+    delete obj.name;
+    obj[this.dialogObj.field] = Number(this.value);
+    this.cdrService.updateBook(obj).subscribe(res => {
+      //colocar loading
+      //this.initialize();
+      this.house = res[0];
+      this.listObjectProps();
+      this.displayPropDialog = false;
+    },
+    error => {
+    }
+    );
+  }
+
   showDialog(imageUrl, i) {
     this.displayDialog = true;
     this.currentImgUrl = imageUrl;
     this.currentImgIndex = i;
-    setTimeout(() => { this.presetDiag.center(); }, 200);
+    setTimeout(() => {
+      const element = document.getElementsByClassName('ui-widget-overlay ui-dialog-mask')[0];
+      element.classList.add('mystyle');
+      this.presetDiag.center();
+    }, 1);
+  }
+
+  showEditDialog(name, field) {
+    this.displayPropDialog = true;
+    this.dialogObj.name = name;
+    this.dialogObj.field = field;
   }
 
   nextImage() {
@@ -112,20 +152,38 @@ export class DetailHouseComponent implements OnInit {
   }
 
   listObjectProps() {
-    const element = this.houseImageList[0];
-    for (const property in element) {
-      if (element.hasOwnProperty(property)) {
+    this.propList = [];
+    for (const property in this.house) {
+      if (this.house.hasOwnProperty(property)) {
         switch(property) {
           case 'dorm':
-            this.propList.push({name: 'Dormitórios', value: element[property], icon: 'fa fa-bed'});
+            if (this.house[property]) {
+              this.propList.push({name: 'Dormitórios', field: property, value: this.house[property], icon: 'fa fa-bed'});
+            }
             break;
 
           case 'kitchen':
-            this.propList.push({name: 'Cozinha', value: element[property], icon: 'fa fa-cutlery'});
+            if (this.house[property]) {
+              this.propList.push({name: 'Cozinhas', field: property, value: this.house[property], icon: 'fa fa-cutlery'});
+            }
             break;
 
           case 'garage':
-            this.propList.push({name: 'Vagas na garagem', value: (element[property]), icon: 'fa fa-car'});
+            if (this.house[property]) {
+              this.propList.push({name: 'Vagas na garagem', field: property, value: (this.house[property]), icon: 'fa fa-car'});
+            }
+            break;
+
+          case 'livingRoom':
+            if (this.house[property]) {
+              this.propList.push({name: 'Salas', field: property, value: (this.house[property]), icon: 'fa fa-simplybuilt'});
+            }
+            break;
+
+          case 'bathroom':
+            if (this.house[property]) {
+              this.propList.push({name: 'Banheiros', field: property, value: (this.house[property]), icon: 'fa fa-tint'});
+            }
             break;
         }
       }

@@ -32,6 +32,7 @@
               <p class="detail-card-label">{{prop.name}}</p>
               <p class="detail-card-label">{{prop.value}}</p>
             </div>
+            <span *ngIf="auth.isLoggedIn()" class="fa fa-edit edit-property" (click)="showEditDialog(prop.name, prop.field)"></span>
           </p-card>
         </div>
       </div>
@@ -48,16 +49,31 @@
 </div>
 <!--<button type="button" routerLink="/list-houses" class="btn btn-danger btn-sm mt-2 ml-1">Voltar</button>-->
 
-<p-dialog #presetDiag [showHeader]="false" [(visible)]="displayDialog" [modal]="true" [responsive]="true" [minY]="70"
+<p-dialog id="galeryDiag" #presetDiag [showHeader]="false" [(visible)]="displayDialog" [modal]="true" [responsive]="true" [minY]="70"
     [baseZIndex]="10000" [height]="heightExp" [width]="widthExp">
 
     <div class="d-flex flex-row-reverse" cWidth="100%">
-      <span class="fa fa-close close-dialog" (click)="displayDialog = false"></span>
+      <label class="close-dialog" (click)="displayDialog = false">Fechar [x]</label>
     </div>
 
     <div style="position: relative" style="max-width: 100%; max-height: 90%">
-      <span class="fa fa-angle-left next-btn" (click)="prevImage()" style="color:red;font-size:60px;cursor:pointer;"></span>
+      <div class="circle prev-btn" (click)="prevImage()">
+        <span class="fa fa-angle-left prev-arrow-image"></span>
+      </div>
       <img src="{{currentImgUrl}}" style="margin-left: 30px; margin-right: 5px" [width]="widthExp -80" [height]="heightExp - 50">
-      <span class="fa fa-angle-right next-btn" (click)="nextImage()" style="color:red;font-size:60px;cursor:pointer;"></span>
+      <div class="circle next-btn" (click)="nextImage()">
+        <span class="fa fa-angle-right next-arrow-image"></span>
+      </div>
     </div>
+</p-dialog>
+
+<p-dialog #propertyDiag header="{{dialogObj.name}}" [showHeader]="true" [(visible)]="displayPropDialog" [modal]="true" [responsive]="true" [minY]="70"
+    [baseZIndex]="10000" [width]="200" [height]="350">
+    <div class="d-flex justify-content-center">
+      <input cWidth="75px" class="form-control" [(ngModel)]="value">
+    </div>
+    <p-footer>
+        <button type="button" pButton icon="pi pi-check" (click)="update()" label="Yes"></button>
+        <button type="button" pButton icon="pi pi-close" (click)="displayPropDialog=false" label="No" class="ui-button-secondary"></button>
+    </p-footer>
 </p-dialog>

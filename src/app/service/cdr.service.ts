@@ -41,6 +41,10 @@ export class CdrService {
     return this.http.post(this.baseUrl + '/books/add', formData);
   }
 
+  updateBook(obj) {
+    return this.http.put(this.baseUrlApi + '/' + obj.id, obj);
+  }
+
   getCdrsWithPaging(filter: any, page: string, size: string) {
     /*.set('sort', 'duration').set('duration.dir', 'desc')*/
     const params = this.setDefaultFilters(filter, {name: 'subscriber', value: filter.subscriber}, page, size);

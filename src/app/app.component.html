@@ -7,8 +7,8 @@
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto" style="margin-right:15%">
                   <li class="nav-item log-btn">
-                    <input *ngIf="!authService.isLoggedIn()" type="button" class="btn btn-primary btn-sm" value="log in" (click)="login()">
-                    <input *ngIf="authService.isLoggedIn()" type="button" class="btn btn-danger btn-sm" value="logout" (click)="logout()">
+                    <input *ngIf="!authService.isLoggedIn()" type="button" class="btn btn-primary btn-sm" value="Área do administrador" (click)="login()">
+                    <input *ngIf="authService.isLoggedIn()" type="button" class="btn btn-danger btn-sm" value="Bem vindo fulano! (logout)" (click)="logout()">
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" routerLink="/list-cdr">Fale Conosco</a>
@@ -32,17 +32,17 @@
 
         <div class="address">
           <div>
-            <img src="../assets/img/logo.png" routerLink="" alt="logo" > <!--width="38px" height="38px"-->
+            <img src="../assets/img/logo-ex.png" routerLink="" alt="logo" width="83px" height="83px"> <!---->
           </div>
 
           <div class="address-box">
             <div class="icon-box mr-3"><span class="fa fa-map-marker" style="color:red;font-size:22px"></span></div>
-            <div class="address-text">Avenida Dr. Delfim Moreira, 478<br>Centro, Santa Rita do Sapucaí</div>
+            <div class="address-text">Seu Endereço<br>Sua cidade</div>
           </div>
 
           <div class="address-box">
             <div class="icon-box mr-3"><span class="fa fa-phone" style="color:red;font-size:22px"></span></div>
-            <div class="address-text">(35) 3471-1600 - (35) 3471-7522<br>email@email.com.br</div>
+            <div class="address-text">Seu telefone<br>Seu e-mail</div>
           </div>
 
         </div>

@@ -21,13 +21,10 @@ export class AuthService {
     }
 
     login(user) {
-        return this.http.post(this.baseUrlApi + '/login', user).subscribe(
-          res => this.setSession(res), error => {
-            console.log(error);
-          });
+        return this.http.post(this.baseUrlApi + '/login', user);
     }
 
-    private setSession(authResult) {
+    setSession(authResult) {
         const expiresAt = moment().add(300, 'second');
 
         localStorage.setItem('token', authResult.user.token);

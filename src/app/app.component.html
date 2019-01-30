@@ -7,7 +7,7 @@
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto" style="margin-right:15%">
                   <li class="nav-item log-btn">
-                    <input *ngIf="!authService.isLoggedIn()" type="button" class="btn btn-primary btn-sm" value="Área do administrador" (click)="login()">
+                    <input *ngIf="!authService.isLoggedIn()" type="button" class="btn btn-primary btn-sm" value="Área do administrador" (click)="displayLoginDialog = true">
                     <input *ngIf="authService.isLoggedIn()" type="button" class="btn btn-danger btn-sm" value="Bem vindo fulano! (logout)" (click)="logout()">
                   </li>
                   <li class="nav-item">
@@ -86,3 +86,22 @@
         <p>Version: {{version}}</p>
     </div>
 </div>-->
+
+<p-dialog #loginDiag header="Área do administrador" [showHeader]="true" [(visible)]="displayLoginDialog" [modal]="true" [responsive]="true"
+    [minY]="70" [baseZIndex]="10000" [width]="280" [height]="350">
+    <form [formGroup]="loginForm" id="LoginForm" novalidate style="display: flex; flex-direction: column; align-items: center">
+      <div class="d-flex flex-column">
+        <input cWidth="230px" class="form-control mb-2" formControlName="user">
+        <input cWidth="230px" class="form-control mb-2" type="password" formControlName="password">
+      </div>
+      <p-footer class="d-flex">
+        <button type="button" pButton icon="pi pi-close" (click)="displayLoginDialog=false" label="Cancelar" class="ui-button-secondary cancel-btn"></button>
+        <button type="button" pButton icon="pi pi-check" (click)="login()" label="Login"></button>
+      </p-footer>
+    </form>
+</p-dialog>
+
+<p-dialog #loadingDiag [showHeader]="false" [(visible)]="displayLoadingDiag" [modal]="true" [responsive]="true"
+    [minY]="70" [baseZIndex]="10000" [width]="280" [height]="350">
+    <p-progressSpinner></p-progressSpinner>
+</p-dialog>

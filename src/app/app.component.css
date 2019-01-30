@@ -90,3 +90,12 @@ label {
 body .ui-slider .ui-slider-range {
   background-color: red !important;
 }
+
+.cancel-btn {
+  margin-right: 10px !important;
+  width: 90px;
+  /* text-align: center; */
+  display: flex;
+  justify-content: center;
+  padding-right: 13px;
+}

@@ -1,26 +1,27 @@
-/* input[type=text], input[type=number], select {
+input[type=text], input[type=number], select {
   height: calc(1.7125rem + 2px) !important;
-  padding: 0.25rem 0.5rem;
-  font-size: 0.875rem;
-  line-height: 1.5;
-  border-radius: 0.2rem;
+  padding: 0.25rem 0.5rem !important;;
+  font-size: 0.875rem !important;;
+  line-height: 1.5 !important;;
+  border-radius: 0.2rem !important;;
 }
 
-label {
-  line-height: 0.81em;
-  font-size: 0.87em;
-} */
+/*#id label {
+  line-height: 0.81em !important;;
+  font-size: 0.87em !important;;
+}*/
 
 .home-image {
   max-width: 1285px;
   max-height: 723px;
-  border-radius: 1.5rem;
+  border-top-left-radius: 1.5rem;
+  border-top-right-radius: 1.5rem;
   margin-top: 15px;
 }
 
 .address {
   background: white;
-  height: 75px;
+  height: 60px;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -99,3 +100,15 @@ body .ui-slider .ui-slider-range {
   justify-content: center;
   padding-right: 13px;
 }
+
+.label-login {
+  font-weight: 700;
+}
+
+.login-dialog {
+  top: 180px !important;
+}
+
+/*body .ui-corner-all {
+  border-radius: 6px !important;
+}*/

@@ -1,3 +1,14 @@
-<div class="d-flex flex-wrap justify-content-center">
-  <img class="home-image" src="../assets/img/004.jpg" width="100%" height="100%" alt="logo" > <!--width="38px" height="38px"-->
+<!--<div #myDiv class="d-flex flex-wrap justify-content-center">
+  <img class="home-image" src="../assets/img/004.jpg" width="100%" height="100%" alt="logo" >
+</div>
+-->
+
+<div #myDiv (mouseenter)="showArrows = true" (mouseleave) ="showArrows = false" class="position: relative">
+  <div *ngIf="showArrows" class="circle prev-btn" (click)="prevImage()">
+    <span class="fa fa-angle-left prev-arrow-image"></span>
+  </div>
+  <img class="home-image" src="../assets/img/004.jpg" width="100%" height="100%" alt="logo" >
+  <div *ngIf="showArrows" class="circle next-btn" (mouseenter)="showArrows = true" (mouseleave) ="showArrows = false" (click)="nextImage()">
+    <span class="fa fa-angle-right next-arrow-image"></span>
+  </div>
 </div>

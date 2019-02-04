@@ -61,7 +61,7 @@ export class AddHouseComponent implements OnInit {
       this.loading = true;
       const fd = new FormData();
       fd.append('files', this.selectedFile, 'files');
-      this.http.post('http://localhost:8080/books/add', fd)
+      this.http.post('http://localhost:8081/books/add', fd)
         .subscribe(res => {
           this.loading = false;
           this.router.navigateByUrl('/list-houses');

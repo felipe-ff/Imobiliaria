@@ -80,7 +80,6 @@ export class AppComponent implements OnInit, AfterViewInit {
         }
         , error => {
           console.log(error);
-          this.displayLoginDialog = false;
           this.displayLoadingDiag = false;
         });
     }
@@ -93,6 +92,15 @@ export class AppComponent implements OnInit, AfterViewInit {
     const elWidth = this.main.nativeElement.children[1].offsetWidth + 22;
       const docWidth = document.documentElement.clientWidth;
       this.widthExp = (elWidth) > (docWidth - 18) ? elWidth : docWidth;
+  }
+
+  @HostListener('document:keydown', ['$event']) onKeydownHandler(event: KeyboardEvent) {
+    if (event.keyCode === 27) { //Escape keycode
+      this.displayLoginDialog = false;
+    }
+    if (event.keyCode === 13) { //enter keycode
+      this.login();
+    }
   }
 
 }

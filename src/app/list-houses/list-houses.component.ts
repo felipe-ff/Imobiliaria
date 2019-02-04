@@ -12,6 +12,7 @@ import { AuthService } from '../service/AuthService';
 export class ListHousesComponent implements OnInit {
 
   houseList;
+  loading = false;
 
   constructor(private cdrService: CdrService, public authService: AuthService, private router: Router) {}
 
@@ -20,10 +21,12 @@ export class ListHousesComponent implements OnInit {
   }
 
   listHouses() {
+    this.loading = true;
     this.cdrService.getBooks()
    .subscribe( data => {
       console.log(data);
       this.houseList = data.items;
+      this.loading = false;
     });
   }
 

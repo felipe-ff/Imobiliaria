@@ -1,5 +1,9 @@
 <button type="button" *ngIf="authService.isLoggedIn()" routerLink="/add-house" class="btn btn-danger btn-sm mt-2 ml-2">Adicionar Novo</button>
 
+<div class="d-flex justify-content-center" style="width:100%">
+    <p-progressSpinner *ngIf="loading"></p-progressSpinner>
+</div>
+
 <div *ngFor="let house of houseList; let i = index">
   <p-card id="listCard" header="CASA" subheader="Santa Rita do Sapucaí" [style]="{width: '760px', margin: '18px'}" styleClass="ui-card-shadow">
     <div (click)="detailBtn.click()" style="cursor:pointer"><img src="{{house.imageUrl}}" width="300px" height="180px"></div>

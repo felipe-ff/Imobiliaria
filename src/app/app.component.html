@@ -6,12 +6,9 @@
 
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto" style="margin-right:15%">
-                  <li class="nav-item log-btn">
-                    <input *ngIf="!authService.isLoggedIn()" type="button" class="btn btn-primary btn-sm" value="Área do administrador" (click)="displayLoginDialog = true">
-                    <input *ngIf="authService.isLoggedIn()" type="button" class="btn btn-danger btn-sm" value="Bem vindo fulano! (logout)" (click)="logout()">
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" routerLink="/list-cdr">Fale Conosco</a>
+                  <li class="nav-item" style="cursor: pointer; margin-right:5px">
+                    <a class="nav-link" *ngIf="!authService.isLoggedIn()" (click)="displayLoginDialog = true">Área do administrador</a>
+                    <a class="nav-link" *ngIf="authService.isLoggedIn()" (click)="logout()">Bem vindo administrador! (logout)</a>
                   </li>
                   <li class="nav-item facebook">
                     <a href="" target="_blank" shape="rect"><span class="fa fa-facebook-f"></span></a> <!--https://www.facebook.com/L%C3%ADder-Im%C3%B3veis-1611329972212003/-->
@@ -32,7 +29,7 @@
 
         <div class="address">
           <div>
-            <img src="../assets/img/logo-ex.png" routerLink="" alt="logo" width="83px" height="83px"> <!---->
+            <img src="../assets/img/logo-ex.png" routerLink="" alt="logo" width="83px" height="83px" style="cursor: pointer"> <!---->
           </div>
 
           <div class="address-box">
@@ -73,30 +70,34 @@
         </form>
 
         <!-- main area-->
-        <div class="mainarea pl-1 pr-1" style="width:99%">
-            <div #main id="main" class="h-100 d-flex" ng-view>
+        <div class="mainarea pl-1 pr-1" style="width:100%;">
+            <div #main id="main" class="h-100 d-flex" style="margin-bottom: 19px" ng-view>
                 <router-outlet class="router-outlet"></router-outlet>
             </div>
         </div>
     </div>
 </div>
 
-<!--<div id="footer" [ngStyle]="{'width.px': widthExp}">
-    <div class="container">
-        <p>Version: {{version}}</p>
+<div id="footer" [ngStyle]="{'width.px': widthExp}">
+    <div class="footer-container">
+        <!--<p>Version: {{version}}</p>-->
+        <p>Copyright © 2019 Todos os direitos reservados. @Ferraz</p>
     </div>
-</div>-->
+</div>
 
 <p-dialog #loginDiag header="Área do administrador" [showHeader]="true" [(visible)]="displayLoginDialog" [modal]="true" [responsive]="true"
-    [minY]="70" [baseZIndex]="10000" [width]="280" [height]="350">
+    [minY]="70" [baseZIndex]="10000" [width]="360" styleClass="login-dialog">
     <form [formGroup]="loginForm" id="LoginForm" novalidate style="display: flex; flex-direction: column; align-items: center">
-      <div class="d-flex flex-column">
-        <input cWidth="230px" class="form-control mb-2" formControlName="user">
-        <input cWidth="230px" class="form-control mb-2" type="password" formControlName="password">
+      <div class="d-flex flex-column" style="margin-top:1px">
+        <label class="label-login">Usuário</label>
+        <input cWidth="240px" class="form-control mb-2" formControlName="user">
+        <label class="label-login">Senha</label>
+        <input cWidth="240px" class="form-control mb-2" type="password" formControlName="password">
       </div>
-      <p-footer class="d-flex">
-        <button type="button" pButton icon="pi pi-close" (click)="displayLoginDialog=false" label="Cancelar" class="ui-button-secondary cancel-btn"></button>
-        <button type="button" pButton icon="pi pi-check" (click)="login()" label="Login"></button>
+      <p-footer class="d-flex" style="margin-top: 22px">
+        <button type="button" class="btn btn-sm btn-success" cWidth="120px" (click)="login()">Login</button>
+        <!--<button type="button" pButton icon="pi pi-close" (click)="displayLoginDialog=false" label="Cancelar" class="ui-button-secondary cancel-btn"></button>
+        <button type="button" pButton icon="pi pi-check" (click)="login()" label="Login"></button>-->
       </p-footer>
     </form>
 </p-dialog>

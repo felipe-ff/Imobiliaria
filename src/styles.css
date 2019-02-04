@@ -149,9 +149,14 @@ p {
   flex-direction: column;
   justify-content: flex-end;
   height: 34px;
-  background-color: #F5F5F5;
+  font-size: 12px;
+  background-color: #1A2A32;
   text-align: center;
-  border-top: 1px solid #E5E5E5;
+  /*border-top: 1px solid #E5E5E5;*/
+}
+
+.footer-container {
+  padding-bottom: 1px;
 }
 
 #footer p {
@@ -175,7 +180,7 @@ input[type=radio] {
 }
 
 body .ui-button.ui-button-text-only .ui-button-text {
-  padding: .59em 1.8em;
+  padding: .2em 1em;
 }
 
 body .ui-inputgroup .ui-inputgroup-addon {

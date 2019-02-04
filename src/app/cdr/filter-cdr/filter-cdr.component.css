@@ -1,0 +1,37 @@
+.next-arrow-image {
+  color:white;
+  font-size:26px;
+  margin-left:18px;
+  margin-top: 7px;
+}
+
+.prev-arrow-image {
+  color:white;
+  font-size:26px;
+  margin-left:15px;
+  margin-top: 7px;
+}
+
+.circle {
+  height: 45px;
+  width: 45px;
+  border-radius: 50%;
+  cursor:pointer;
+  position: absolute;
+  display: inline-block;
+  border: 1px solid #272828;
+  /*background: #272828;*/
+  background: #272828;
+}
+
+.next-btn {
+  position: absolute !important;
+  margin-top: 38vh;
+  margin-left: 8px;
+}
+
+.prev-btn {
+  position: absolute !important;
+  margin-top: 38vh;
+  margin-left: -57px;
+}

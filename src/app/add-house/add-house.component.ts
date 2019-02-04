@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {Router} from '@angular/router';
 import { CdrService } from '../service/cdr.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-add-house',
@@ -12,15 +13,29 @@ export class AddHouseComponent implements OnInit {
 
   selectedFile: Array<File> = [];
   loading = false;
+  newForm: FormGroup;
 
-  constructor(private http: HttpClient, private router: Router, private cdrService: CdrService) { }
+  constructor(private http: HttpClient, private router: Router, private cdrService: CdrService, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
+    this.newForm = this.initializeForm();
   }
 
   onFileSelected(event) {
     this.selectedFile = <Array<File>>event.target.files;
 
+  }
+
+  initializeForm() {
+    return this.formBuilder.group({
+      user: ['', Validators.required],
+      password: ['', Validators.required],
+      a: [''],
+      b: [''],
+      c: [''],
+      d: ['']
+    },
+    );
   }
 
   /**

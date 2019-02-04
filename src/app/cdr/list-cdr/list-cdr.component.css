@@ -3,17 +3,6 @@
 /* Sticky footer styles
  -------------------------------------------------- */
 
- .box-hpe {
-  height: 140px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border-radius: 3px;
-  background: #fafafa;
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
-}
-
 #subscriberPanel label {
     width: 110px;
 }

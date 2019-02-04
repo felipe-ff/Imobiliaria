@@ -8,3 +8,7 @@
   top: -8px !important;
   left: -8px !important;
 }
+
+.label-login {
+  font-weight: 700;
+}

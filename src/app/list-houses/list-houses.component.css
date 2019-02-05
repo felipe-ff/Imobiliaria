@@ -5,11 +5,15 @@
 .details-btn {
   position: absolute;
   margin-left: 745px;
-  margin-top: 160px;
+  margin-top: 140px;
 }
 
 .delete-btn {
   position: absolute;
-  margin-left: 596px;
-  margin-top: 160px;
+  margin-left: 696px;
+  margin-top: 140px;
+}
+
+.ui-card-body {
+  padding: 0;
 }

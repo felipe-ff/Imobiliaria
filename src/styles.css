@@ -48,6 +48,9 @@ p {
 
 .mr-15 { margin-right: 15px !important;}
 
+.mr-35 { margin-right: 35px !important;}
+.mr-120 { margin-right: 120px !important;}
+
 .col-sm-3-5 {
     flex: 0 0 30%;
     max-width: 30%;
@@ -179,7 +182,7 @@ input[type=radio] {
   margin-top: 4px;
 }
 
-input[type=text], input[type=number], select {
+input[type=text], input[type=number], select.custom-small {
   height: calc(1.5425rem + 2px) !important;
   padding: 0.15rem 0.3rem !important;;
   font-size: 0.875rem !important;;

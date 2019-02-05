@@ -1,18 +1,43 @@
-<label style="font-size: 22px">Adicionar novo Imóvel</label>
+<label style="font-size: 22px">Adicionar novo Imóvel (Administrador)</label>
 <form [formGroup]="newForm" id="NewForm" class="mt-3" novalidate style="display: flex; flex-direction: column;">
-  <div class="d-flex flex-column flex-wrap" style="margin-top:1px; height:250px">
-    <label class="label-login mb-2 mr-5">Tipo</label>
-    <input cWidth="240px" class="form-control mb-2" formControlName="user">
-    <label class="label-login mr-5">Quartos</label>
-    <input cWidth="240px" class="form-control mb-2 mr-5" type="password" formControlName="password">
+  <div class="d-flex flex-column flex-wrap" style="margin-top:1px; width: 650px; height:322px">
+    <label class="label-login mb-2 mr-120">Tipo</label>
+    <select class="form-control" cWidth="250px" style="margin-bottom: .5rem" formControlName="type">
+      <option value="0">Selecione...</option>
+      <option value="1">Residencial</option>
+      <option value="2">Comercial</option>
+    </select>
+    <label class="label-login mr-120">Quartos</label>
+    <select class="form-control" cWidth="250px" style="margin-bottom: .5rem" formControlName="dorm">
+      <option value="0">Selecione...</option>
+      <option value="1">1 Quarto</option>
+      <option value="2">2 Quartos</option>
+      <option value="2">3 Quartos</option>
+      <option value="2">4 Quartos</option>
+      <option value="2">5 ou mais Quartos</option>
+    </select>
     <label class="label-login">Banheiros</label>
-    <input cWidth="240px" class="form-control mb-2" formControlName="a">
+    <select class="form-control" cWidth="250px" style="margin-bottom: .5rem" formControlName="bathroom">
+      <option value="0">Selecione...</option>
+      <option value="1">1 Banheiro</option>
+      <option value="2">2 Banheiros</option>
+      <option value="2">3 ou mais Banheiros</option>
+    </select>
+
+    <label class="label-login">Salas</label>
+    <select class="form-control" cWidth="250px" style="margin-bottom: .5rem" formControlName="livingRoom">
+      <option value="0">Selecione...</option>
+      <option value="1">1 Sala</option>
+      <option value="2">2 Salas</option>
+      <option value="2">3 ou mais Salas</option>
+    </select>
+
     <label class="label-login">Cidade</label>
     <input cWidth="240px" class="form-control mb-2" formControlName="b">
     <label class="label-login">Bairro</label>
     <input cWidth="240px" class="form-control mb-2" formControlName="c">
     <label class="label-login">Preço</label>
-    <input cWidth="240px" class="form-control mb-2" formControlName="d">
+    <input cWidth="240px" class="form-control mb-2" formControlName="price">
   </div>
 
 
@@ -21,13 +46,14 @@
     <input #fileInput type="file" (change)="onFileSelected($event)" multiple>
     <button id="select-btn" type="button" (click)="fileInput.click()" class="btn btn-danger btn-sm mt-2 ml-1">Selecionar imagens...</button>
   </div>
-  <input type="button" class="btn btn-danger btn-sm mt-2 ml-1" value="Fazer upload" (click)="onUpload()">
-
-  <button type="button" routerLink="/list-houses" class="btn btn-danger btn-sm mt-2 ml-1">Voltar</button>
+  <!--<input type="button" class="btn btn-danger btn-sm mt-2 ml-1" value="Fazer upload" (click)="onUpload()">-->
 
   <p-progressSpinner *ngIf="loading"></p-progressSpinner>
 </div>
 
-<button type="button" class="btn btn-sm btn-success" cWidth="120px">Salvar</button>
+<div class="d-flex justify-content-center mt-4">
+  <button type="button" routerLink="/list-houses" class="btn btn-sm btn-danger" cWidth="120px">Voltar</button>
+  <button type="button" class="btn btn-sm btn-success ml-3" (click)="onUpload()" cWidth="120px">Salvar</button>
+</div>
 
 </form>

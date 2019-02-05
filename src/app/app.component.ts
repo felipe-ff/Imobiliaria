@@ -57,8 +57,8 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   initializeLoginForm() {
     return this.formBuilder.group({
-      user: ['', Validators.required],
-      password: ['', Validators.required]
+      user: ['admin', Validators.required],
+      password: ['admin123', Validators.required]
     },
     );
   }

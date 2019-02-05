@@ -30,10 +30,15 @@ export class AddHouseComponent implements OnInit {
     return this.formBuilder.group({
       user: ['', Validators.required],
       password: ['', Validators.required],
+      type: ['0'],
+      dorm: ['0'],
+      bathroom: ['0'],
+      livingRoom: ['0'],
       a: [''],
       b: [''],
       c: [''],
-      d: ['']
+      e: [''],
+      price: ['']
     },
     );
   }
@@ -51,10 +56,24 @@ export class AddHouseComponent implements OnInit {
 
     this.loading = true;
 
-    for(let i = 0; i < files.length; i++){
+    for (let i = 0; i < files.length; i++){
         formData.append('images', files[i], files[i]['name']);
     }
-    console.log('form data variable :   ' + formData.toString());
+    if (this.newForm.value.type) {
+      formData.append('type', this.newForm.value.type);
+    }
+    if (this.newForm.value.dorm) {
+      formData.append('dorm', this.newForm.value.dorm);
+    }
+    if (this.newForm.value.bathroom) {
+      formData.append('bathroom', this.newForm.value.bathroom);
+    }
+    if (this.newForm.value.livingRoom) {
+      formData.append('livingRoom', this.newForm.value.livingRoom);
+    }
+    if (this.newForm.value.price) {
+      formData.append('price', this.newForm.value.price);
+    }
     this.cdrService.addBook(formData).subscribe(res => {
       this.loading = false;
       this.router.navigateByUrl('/list-houses');

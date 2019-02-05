@@ -13,7 +13,7 @@
 </div>
 <div *ngIf="!loading" class="d-flex flex-column mt-2" style="width:100%">
 
-  <div id="description-div" class="d-flex flex-column" style="width:100%; border-bottom: 1.4px solid #f1f1f1; margin-left:10%">
+  <div id="description-div" class="d-flex flex-column" style="width:90%; border-bottom: 1.4px solid #f1f1f1; margin-left:10%">
       <label style="font-size:26px">Detalhes do Imóvel:</label>
       <div class="d-flex ml-3 mr-2" style="width:70%">
         <!-- <div class="d-flex ml-2">
@@ -41,11 +41,11 @@
       </div>
   </div>
 
-  <div id="images-div" class="d-flex flex-wrap mt-3 ml-5" style="width:100%">
+  <div id="images-div" class="d-flex flex-wrap mt-3 ml-5 mr-5" style="width:100%">
     <div *ngFor="let h of houseImageList; let i = index" style="margin-right: 2px; margin-top: 2px">
       <div style="cursor: pointer;">
         <img src="{{h.imageUrl}}" (click)="showDialog(h.imageUrl, i)" target="imgbox" style="max-width:380px;height:230px">
-      </div> <!--width="380px" height="230px"-->
+      </div>
     </div>
   </div>
 

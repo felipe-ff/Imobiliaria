@@ -4,7 +4,8 @@ import { ChangeDetectorRef } from '@angular/core';
 import { VERSION } from '../environments/version';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from './service/AuthService';
-import { Route, Router } from '@angular/router';
+import { Router } from '@angular/router';
+import { isDevMode } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -34,8 +35,8 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.searchCdrForm = this.initializeForm();
     this.loginForm = this.initializeLoginForm();
     this.durationTypeOptions = [
-      {name: 'Aluguel', code: '1'},
-      {name: 'Venda', code: '2'}
+      {name: 'Aluguel', code: '0'},
+      {name: 'Venda', code: '1'}
     ];
   }
 
@@ -50,7 +51,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   initializeForm() {
     const pattern = '^(0|[0-9][0-9]*)$';
     return this.formBuilder.group({
-      purpose: [{name: 'Aluguel', code: 1}],
+      purpose: [{name: 'Aluguel', code: 0}],
       rangeValues: [[0, 4000]],
       type: [''],
       dorm: [''],
@@ -61,8 +62,8 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   initializeLoginForm() {
     return this.formBuilder.group({
-      user: ['admin', Validators.required],
-      password: ['admin123', Validators.required]
+      user: [ (isDevMode() ? 'admin' : ''), Validators.required],
+      password: [ (isDevMode() ? 'admin123' : ''), Validators.required]
     },
     );
   }
@@ -90,12 +91,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   navigate() {
-    console.log(this.searchCdrForm.value);
     this.router.navigate(['/list-houses'], {queryParams: { type: JSON.stringify(this.searchCdrForm.value)}} );
-  }
-
-  test() {
-    console.log(this.searchCdrForm.value);
   }
 
   get f() { return this.searchCdrForm.controls; }

@@ -46,7 +46,6 @@ export class DetailHouseComponent implements OnInit {
       this.cdrService.getBookById(+id)
       .subscribe( data => {
         this.houseImageList = data;
-        console.log(this.houseImageList);
         this.house = this.houseImageList[0];
         this.listObjectProps();
         /*const img = new Image();
@@ -153,7 +152,6 @@ export class DetailHouseComponent implements OnInit {
 
   listObjectProps() {
     this.propList = [];
-    console.log(this.house);
     for (const property in this.house) {
       if (this.house.hasOwnProperty(property)) {
         switch (property) {
@@ -189,7 +187,6 @@ export class DetailHouseComponent implements OnInit {
         }
       }
     }
-    console.log(this.propList);
   }
 
 }

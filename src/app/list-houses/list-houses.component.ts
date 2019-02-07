@@ -29,9 +29,7 @@ export class ListHousesComponent implements OnInit {
 
     this.route.queryParams.subscribe(params => {
       const type = params['type'];
-      console.log(type);
       this.cdrService.getBooks(type).subscribe( data => {
-        console.log(data);
         this.houseList = data.items;
         this.loading = false;
       });

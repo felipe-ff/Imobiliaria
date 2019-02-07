@@ -39,7 +39,8 @@ export class AddHouseComponent implements OnInit {
       b: [''],
       c: [''],
       e: [''],
-      price: ['']
+      price: ['0'],
+      purpose: ['0'],
     },
     );
   }
@@ -53,7 +54,6 @@ export class AddHouseComponent implements OnInit {
 
     const formData: any = new FormData();
     const files: Array<File> = this.selectedFile;
-    console.log(files);
 
     this.loading = true;
 
@@ -74,6 +74,10 @@ export class AddHouseComponent implements OnInit {
     }
     if (this.newForm.value.price) {
       formData.append('price', this.newForm.value.price);
+    }
+
+    if (this.newForm.value.price) {
+      formData.append('purpose', this.newForm.value.purpose);
     }
 
     formData.append('publishedDate', moment().toString);

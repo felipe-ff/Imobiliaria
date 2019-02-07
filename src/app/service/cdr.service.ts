@@ -15,13 +15,13 @@ export class CdrService {
 
   setLocation() {
     const port = isDevMode() ? '8081' : '';
-    const url = isDevMode() ? 'http://localhost:' : 'https://poised-breaker-227417.appspot.com';
+    const url = isDevMode() ? 'http://localhost:' : 'https://imobiliaria-db.appspot.com';
     this.baseUrlApi = url + port + '/api/books';
     this.baseUrl = url + port;
   }
 
-  getBooks() {
-    return this.http.get<any>(this.baseUrlApi);
+  getBooks(filters) {
+    return this.http.get<any>(this.baseUrlApi + '/filters/' + filters) ;
   }
 
   login(user) {

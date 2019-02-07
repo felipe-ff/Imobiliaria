@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import {Router} from '@angular/router';
 import { CdrService } from '../service/cdr.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-add-house',
@@ -30,10 +31,10 @@ export class AddHouseComponent implements OnInit {
     return this.formBuilder.group({
       user: ['', Validators.required],
       password: ['', Validators.required],
-      type: ['0'],
-      dorm: ['0'],
-      bathroom: ['0'],
-      livingRoom: ['0'],
+      type: [''],
+      dorm: [''],
+      bathroom: [''],
+      livingRoom: [''],
       a: [''],
       b: [''],
       c: [''],
@@ -74,6 +75,9 @@ export class AddHouseComponent implements OnInit {
     if (this.newForm.value.price) {
       formData.append('price', this.newForm.value.price);
     }
+
+    formData.append('publishedDate', moment().toString);
+
     this.cdrService.addBook(formData).subscribe(res => {
       this.loading = false;
       this.router.navigateByUrl('/list-houses');

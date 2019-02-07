@@ -15,7 +15,7 @@ export class AuthService {
 
     setLocation() {
       const port = isDevMode() ? '8081' : '';
-      const url = isDevMode() ? 'http://localhost:' : 'https://poised-breaker-227417.appspot.com';
+      const url = isDevMode() ? 'http://localhost:' : 'https://imobiliaria-db.appspot.com';
       this.baseUrlApi = url + port + '/api/books';
       this.baseUrl = url + port;
     }

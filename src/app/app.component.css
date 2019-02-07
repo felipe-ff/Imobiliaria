@@ -93,6 +93,11 @@ body .ui-slider .ui-slider-range {
   padding-right: 13px;
 }
 
+.search-btn {
+  height: 33px;
+  line-height: 1;
+}
+
 .label-login {
   font-weight: 700;
 }

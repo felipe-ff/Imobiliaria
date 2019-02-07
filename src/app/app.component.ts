@@ -4,6 +4,7 @@ import { ChangeDetectorRef } from '@angular/core';
 import { VERSION } from '../environments/version';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from './service/AuthService';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -27,7 +28,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   displayLoadingDiag;
 
   constructor(private util: UtilityService, public authService: AuthService, private cdRef: ChangeDetectorRef,
-      private formBuilder: FormBuilder) { }
+      private formBuilder: FormBuilder, private router: Router) { }
 
   ngOnInit() {
     this.searchCdrForm = this.initializeForm();
@@ -49,8 +50,11 @@ export class AppComponent implements OnInit, AfterViewInit {
   initializeForm() {
     const pattern = '^(0|[0-9][0-9]*)$';
     return this.formBuilder.group({
-      typeDuration: [{name: 'Aluguel', code: 1}],
-      rangeValues: [[0, 4000]]
+      purpose: [{name: 'Aluguel', code: 1}],
+      rangeValues: [[0, 4000]],
+      type: [''],
+      dorm: [''],
+      bathroom: ['']
     },
     );
   }
@@ -83,6 +87,15 @@ export class AppComponent implements OnInit, AfterViewInit {
           this.displayLoadingDiag = false;
         });
     }
+  }
+
+  navigate() {
+    console.log(this.searchCdrForm.value);
+    this.router.navigate(['/list-houses'], {queryParams: { type: JSON.stringify(this.searchCdrForm.value)}} );
+  }
+
+  test() {
+    console.log(this.searchCdrForm.value);
   }
 
   get f() { return this.searchCdrForm.controls; }

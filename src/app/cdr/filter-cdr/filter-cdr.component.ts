@@ -19,12 +19,17 @@ export class FilterCdrComponent implements OnInit, AfterViewInit, OnDestroy {
   ngAfterViewInit() {
     const el = this.myDiv.nativeElement.parentNode.parentNode.parentNode;
     this.renderer.setElementStyle(el, 'background', '#080D20');
-    console.log(el);
+
+    const el2 = this.myDiv.nativeElement.parentNode.parentNode.parentNode.parentNode.parentNode;
+    this.renderer.setElementStyle(el2, 'background', '#080D20');
   }
 
   ngOnDestroy() {
     const el = this.myDiv.nativeElement.parentNode.parentNode.parentNode;
     this.renderer.setElementStyle(el, 'background', 'white');
+
+    const el2 = this.myDiv.nativeElement.parentNode.parentNode.parentNode.parentNode.parentNode;
+    this.renderer.setElementStyle(el2, 'background', 'white');
   }
 
   nextImage() {

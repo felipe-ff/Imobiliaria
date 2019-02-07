@@ -45,15 +45,15 @@ export class DetailHouseComponent implements OnInit {
       const id = params['id'];
       this.cdrService.getBookById(+id)
       .subscribe( data => {
-        //console.log(data);
         this.houseImageList = data;
+        console.log(this.houseImageList);
         this.house = this.houseImageList[0];
         this.listObjectProps();
-        const img = new Image();
-      /* img.addEventListener('load', function() {
+        /*const img = new Image();
+        img.addEventListener('load', function() {
           //alert( this.naturalWidth + ' ' + this.naturalHeight );
-      });
-      img.src = data.imageUrl; */
+        });
+        img.src = data.imageUrl; */
         //this.imgUrl = data.imageUrl;
         });
     });
@@ -153,9 +153,10 @@ export class DetailHouseComponent implements OnInit {
 
   listObjectProps() {
     this.propList = [];
+    console.log(this.house);
     for (const property in this.house) {
       if (this.house.hasOwnProperty(property)) {
-        switch(property) {
+        switch (property) {
           case 'dorm':
             if (this.house[property]) {
               this.propList.push({name: 'Dormitórios', field: property, value: this.house[property], icon: 'fa fa-bed'});
@@ -188,6 +189,7 @@ export class DetailHouseComponent implements OnInit {
         }
       }
     }
+    console.log(this.propList);
   }
 
 }

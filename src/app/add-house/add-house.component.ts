@@ -1,6 +1,6 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {Router} from '@angular/router';
+import { Router } from '@angular/router';
 import { CdrService } from '../service/cdr.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import * as moment from 'moment';
@@ -35,10 +35,8 @@ export class AddHouseComponent implements OnInit {
       dorm: [''],
       bathroom: [''],
       livingRoom: [''],
-      a: [''],
-      b: [''],
-      c: [''],
-      e: [''],
+      city: [''],
+      district: [''],
       price: ['0'],
       purpose: ['0'],
     },
@@ -50,34 +48,23 @@ export class AddHouseComponent implements OnInit {
    * Max 10mb
    */
   onUpload() {
-    if (this.selectedFile) {
-
     const formData: any = new FormData();
-    const files: Array<File> = this.selectedFile;
-
     this.loading = true;
 
-    for (let i = 0; i < files.length; i++){
-        formData.append('images', files[i], files[i]['name']);
-    }
-    if (this.newForm.value.type) {
-      formData.append('type', this.newForm.value.type);
-    }
-    if (this.newForm.value.dorm) {
-      formData.append('dorm', this.newForm.value.dorm);
-    }
-    if (this.newForm.value.bathroom) {
-      formData.append('bathroom', this.newForm.value.bathroom);
-    }
-    if (this.newForm.value.livingRoom) {
-      formData.append('livingRoom', this.newForm.value.livingRoom);
-    }
-    if (this.newForm.value.price) {
-      formData.append('price', this.newForm.value.price);
+    if (this.selectedFile) {
+      const files: Array<File> = this.selectedFile;
+      for (let i = 0; i < files.length; i++){
+          formData.append('images', files[i], files[i]['name']);
+      }
     }
 
-    if (this.newForm.value.price) {
-      formData.append('purpose', this.newForm.value.purpose);
+    for (const key in this.newForm.value) {
+      if (this.newForm.value.hasOwnProperty(key)) {
+        const value = this.newForm.value[key];
+        if (value) {
+          formData.append(key, value);
+        }
+      }
     }
 
     formData.append('publishedDate', moment().toString);
@@ -92,8 +79,13 @@ export class AddHouseComponent implements OnInit {
     }
     );
 
+  }
 
-     /*  const myArray = [];
+}
+
+
+
+/*  const myArray = [];
       for (const key in this.selectedFile) {
         if (this.selectedFile.hasOwnProperty(key) && this.selectedFile[key] != null) {
           myArray.push(this.selectedFile[key]);
@@ -113,7 +105,3 @@ export class AddHouseComponent implements OnInit {
           this.router.navigateByUrl('/list-houses');
         }
         ); */
-    }
-  }
-
-}

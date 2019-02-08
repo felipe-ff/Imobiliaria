@@ -1,11 +1,11 @@
 import { Component, OnInit, ViewChild, AfterViewInit, OnDestroy, ElementRef, Renderer } from '@angular/core';
 
 @Component({
-  selector: 'app-filter-cdr',
-  templateUrl: './filter-cdr.component.html',
-  styleUrls: ['./filter-cdr.component.css']
+  selector: 'app-home-gallery',
+  templateUrl: './home-gallery.component.html',
+  styleUrls: ['./home-gallery.component.css']
 })
-export class FilterCdrComponent implements OnInit, AfterViewInit, OnDestroy {
+export class HomeGalleryComponent implements OnInit, AfterViewInit, OnDestroy {
 
   @ViewChild('myDiv') myDiv: ElementRef;
 

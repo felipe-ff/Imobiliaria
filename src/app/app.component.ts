@@ -55,7 +55,9 @@ export class AppComponent implements OnInit, AfterViewInit {
       rangeValues: [[0, 4000]],
       type: [''],
       dorm: [''],
-      bathroom: ['']
+      bathroom: [''],
+      city: [''],
+      district: ['']
     },
     );
   }

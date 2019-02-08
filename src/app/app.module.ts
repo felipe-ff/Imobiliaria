@@ -5,10 +5,6 @@ import { AppComponent } from './app.component';
 import { routing } from './app.routing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { AddGroupComponent } from './group/add-group/add-group.component';
-import { EditGroupComponent } from './group/edit-group/edit-group.component';
-import { ListGroupComponent } from './group/list-group/list-group.component';
-import { ListCdrComponent } from './cdr/list-cdr/list-cdr.component';
 import { GroupService } from './service/group.service';
 import { PresetService } from './service/preset.service';
 import { CdrService } from './service/cdr.service';
@@ -27,15 +23,10 @@ import { ToastrModule } from 'ng6-toastr-notifications';
 import { RadioButtonModule } from 'primeng/primeng';
 import { InputTextModule } from 'primeng/inputtext';
 import { CustomWidthDirective } from './service/custom-width.directive';
-import { DetailCdrComponent } from './cdr/detail-cdr/detail-cdr.component';
-import { ListCdrSubscriberComponent } from './cdr/list-cdr-subscriber/list-cdr-subscriber.component';
-import { ReportComponent } from './report/report.component';
 import { HttpIntercept } from './service/http-intercept';
 import {NgxMaskModule} from 'ngx-mask';
 import { ChartModule } from 'angular-highcharts';
-import { CdrChartComponent } from './cdr-chart/cdr-chart.component';
-import { FilterCdrComponent } from './cdr/filter-cdr/filter-cdr.component';
-import { ListPresetComponent } from './list-preset/list-preset.component';
+import { HomeGalleryComponent } from './home-gallery/home-gallery.component';
 import {ProgressSpinnerModule} from 'primeng/progressspinner';
 import { ListHousesComponent } from './list-houses/list-houses.component';
 import { DetailHouseComponent } from './detail-house/detail-house.component';
@@ -45,17 +36,8 @@ import { Globals } from './service/globals';
 @NgModule({
   declarations: [
     AppComponent,
-    ListGroupComponent,
-    ListCdrComponent,
-    AddGroupComponent,
-    EditGroupComponent,
     CustomWidthDirective,
-    DetailCdrComponent,
-    ListCdrSubscriberComponent,
-    ReportComponent,
-    CdrChartComponent,
-    FilterCdrComponent,
-    ListPresetComponent,
+    HomeGalleryComponent,
     ListHousesComponent,
     DetailHouseComponent,
     AddHouseComponent

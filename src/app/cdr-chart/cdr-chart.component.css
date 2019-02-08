@@ -1,9 +1,0 @@
-.chartBox {
-  height: 260px;
-  width: 1000px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: white;
-  margin-bottom: 10px
-}

@@ -4,6 +4,7 @@ import {Router, ActivatedRoute} from '@angular/router';
 import { AuthService } from '../service/AuthService';
 import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
+import { Purpose } from '../model/purpose.enum';
 
 @Component({
   selector: 'app-list-houses',
@@ -16,6 +17,7 @@ export class ListHousesComponent implements OnInit {
   heroes$: Observable<any[]>;
   houseList;
   loading = false;
+  purpose = Purpose;
 
   constructor(private cdrService: CdrService, public authService: AuthService, private router: Router,
     private route: ActivatedRoute) {}

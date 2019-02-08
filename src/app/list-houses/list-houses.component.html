@@ -8,7 +8,7 @@
   <p-card id="listCard" header="CASA" subheader="Santa Rita do Sapucaí" [style]="{width: '895px', marginTop: '18px', marginRight: '5px'}" styleClass="ui-card-shadow">
     <div (click)="detailBtn.click()" style="cursor:pointer"><img src="{{house.imageUrl}}" width="310px" height="189.5px"></div>
     <div class="d-flex flex-column ml-4 mr-2" style="width:410px">
-      <div style="color:#019DA5; font-size:18px">CASA</div>
+      <div style="color:#019DA5; font-size:18px">{{purpose[house.purpose]}}</div>
       <div>Santa Rita do Sapucaí - MG</div>
       <div>Centro</div>
       <div style="margin-left:-2px">

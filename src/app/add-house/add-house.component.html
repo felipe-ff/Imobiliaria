@@ -4,8 +4,8 @@
     <label class="label-login mb-2 mr-120">Tipo</label>
     <select class="form-control" cWidth="250px" style="margin-bottom: .5rem" formControlName="type">
       <option value="">Selecione...</option>
-      <option value="1">Residencial</option>
-      <option value="2">Comercial</option>
+      <option value="0">Residencial</option>
+      <option value="1">Comercial</option>
     </select>
     <label class="label-login mr-120">Quartos</label>
     <select class="form-control" cWidth="250px" style="margin-bottom: .5rem" formControlName="dorm">
@@ -47,6 +47,13 @@
     </select>
     <label class="label-login">Preço</label>
     <input cWidth="240px" class="form-control mb-2" formControlName="price">
+
+    <label class="label-login">Finalidade</label>
+    <select class="form-control" cWidth="250px" style="margin-bottom: .5rem" formControlName="purpose">
+      <option value="">Selecione...</option>
+      <option value="rent">Aluguel</option>
+      <option value="sell">Venda</option>
+    </select>
   </div>
 
 

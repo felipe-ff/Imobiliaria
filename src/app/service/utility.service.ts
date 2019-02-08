@@ -1,13 +1,11 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { ToastrManager } from 'ng6-toastr-notifications';
-import { ShowView } from '../model/show-view.enum';
 import * as moment from 'moment';
 
 @Injectable()
 export class UtilityService {
 
-  changeView = new EventEmitter<ShowView>();
   loadDetailsList = new EventEmitter<Number>();
   closePresetDialog = new EventEmitter();
   centerDialog = new EventEmitter();

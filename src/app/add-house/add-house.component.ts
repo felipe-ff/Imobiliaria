@@ -38,7 +38,7 @@ export class AddHouseComponent implements OnInit {
       city: [''],
       district: [''],
       price: ['0'],
-      purpose: ['0'],
+      purpose: ['rent'],
     },
     );
   }

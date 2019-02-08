@@ -35,8 +35,9 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.searchCdrForm = this.initializeForm();
     this.loginForm = this.initializeLoginForm();
     this.durationTypeOptions = [
-      {name: 'Aluguel', code: '0'},
-      {name: 'Venda', code: '1'}
+      {name: 'Todos', code: ''},
+      {name: 'Aluguel', code: 'rent'},
+      {name: 'Venda', code: 'sell'}
     ];
   }
 
@@ -51,7 +52,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   initializeForm() {
     const pattern = '^(0|[0-9][0-9]*)$';
     return this.formBuilder.group({
-      purpose: [{name: 'Aluguel', code: 0}],
+      purpose: [{name: 'Aluguel', code: 'rent'}],
       rangeValues: [[0, 4000]],
       type: [''],
       dorm: [''],

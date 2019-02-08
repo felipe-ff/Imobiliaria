@@ -190,11 +190,12 @@ input[type=text], input[type=number], select.custom-small {
   border-radius: 0.2rem !important;;
 }
 
-/*
+
 body .ui-button.ui-button-text-only .ui-button-text {
-  padding: .2em 1em;
+  padding: .429em .9em;
 }
 
+/*
 body .ui-inputgroup .ui-inputgroup-addon {
   padding: .2em;
 }*/

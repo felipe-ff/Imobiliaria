@@ -15,6 +15,17 @@
   margin-left: -14px;
 }
 
+.remove-btn {
+  position: absolute !important;
+  /*margin-top: 1vh;*/
+  margin-left: -30px;
+  /*display: none;*/
+}
+
+.edit-image:hover + .remove-btn {
+  display: inline-block;
+}
+
 .prev-btn {
   position: absolute !important;
   margin-top: 38.5vh;

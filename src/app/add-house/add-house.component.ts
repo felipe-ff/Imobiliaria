@@ -24,7 +24,6 @@ export class AddHouseComponent implements OnInit {
 
   onFileSelected(event) {
     this.selectedFile = <Array<File>>event.target.files;
-
   }
 
   initializeForm() {
@@ -35,6 +34,8 @@ export class AddHouseComponent implements OnInit {
       dorm: [''],
       bathroom: [''],
       livingRoom: [''],
+      kitchen: [''],
+      garage: [''],
       city: [''],
       district: [''],
       price: ['0'],
@@ -53,7 +54,7 @@ export class AddHouseComponent implements OnInit {
 
     if (this.selectedFile) {
       const files: Array<File> = this.selectedFile;
-      for (let i = 0; i < files.length; i++){
+      for (let i = 0; i < files.length; i++) {
           formData.append('images', files[i], files[i]['name']);
       }
     }
@@ -67,7 +68,7 @@ export class AddHouseComponent implements OnInit {
       }
     }
 
-    formData.append('publishedDate', moment().toString);
+    //npmformData.append('publishedDate', moment().toString);
 
     this.cdrService.addBook(formData).subscribe(res => {
       this.loading = false;

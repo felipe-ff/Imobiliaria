@@ -5,6 +5,7 @@ import 'rxjs/add/operator/filter';
 import { CdrService } from '../service/cdr.service';
 import { Dialog } from 'primeng/dialog';
 import { AuthService } from '../service/AuthService';
+import { UtilityService } from '../service/utility.service';
 
 @Component({
   selector: 'app-detail-house',
@@ -14,7 +15,6 @@ import { AuthService } from '../service/AuthService';
 })
 export class DetailHouseComponent implements OnInit {
 
-  selectedFile: File = null;
   displayDialog = false;
   displayPropDialog = false;
   loading = false;
@@ -27,12 +27,12 @@ export class DetailHouseComponent implements OnInit {
   currentImgIndex;
   propList = [];
   dialogObj: any = {};
-  value: number;
+  selectedFile: Array<File> = [];
 
   @ViewChild('presetDiag') presetDiag: Dialog;
 
   constructor(private http: HttpClient, private router: Router, private route: ActivatedRoute,
-             private cdrService: CdrService, public auth: AuthService) { }
+             private cdrService: CdrService, public auth: AuthService, public util: UtilityService) { }
 
   ngOnInit() {
     this.initialize();
@@ -45,8 +45,9 @@ export class DetailHouseComponent implements OnInit {
       const id = params['id'];
       this.cdrService.getBookById(+id)
       .subscribe( data => {
-        this.houseImageList = data;
-        this.house = this.houseImageList[0];
+        this.house = data;
+        this.houseImageList = data.imageUrl;
+        console.log(this.houseImageList);
         this.listObjectProps();
         /*const img = new Image();
         img.addEventListener('load', function() {
@@ -59,44 +60,69 @@ export class DetailHouseComponent implements OnInit {
   }
 
   onFileSelected(event) {
-    this.selectedFile = <File>event.target.files[0];
+    this.selectedFile = <Array<File>>event.target.files;
   }
 
   onUpload() {
-    if (this.selectedFile) {
-      this.loading = true;
-      const fd = new FormData();
-      fd.append('image', this.selectedFile, this.selectedFile.name);
-      this.http.post('http://localhost:8081/books/add', fd)
-        .subscribe(res => {
-          this.loading = false;
-          this.router.navigateByUrl('/list-houses');
-        },
-        error => {
-          this.loading = false;
-          this.router.navigateByUrl('/list-houses');
+    const formData: any = new FormData();
+    this.loading = true;
+
+    console.log(this.house);
+    for (const key in this.house) {
+      if (this.house.hasOwnProperty(key)) {
+        const value = this.house[key];
+        if (value) {
+          formData.append(key, value);
         }
-        );
+      }
     }
+
+    if (this.selectedFile) {
+      const files: Array<File> = this.selectedFile;
+      for (let i = 0; i < files.length; i++) {
+          formData.append('images', files[i], files[i]['name']);
+      }
+    }
+
+    this.cdrService.updateBook(this.house.id, formData).subscribe(res => {
+      this.loading = false;
+      this.house = res;
+      this.listObjectProps();
+    },
+    error => {
+      this.loading = false;
+    }
+    );
   }
 
-  update() {
-    const obj = this.houseImageList[0];
-    delete obj.bookId;
-    delete obj.idImagesUrl;
-    delete obj.imageUrl;
-    delete obj.name;
-    obj[this.dialogObj.field] = Number(this.value);
+  update(field, value) {
+    /* const obj = this.house;
+    obj[this.dialogObj.field] = Number(value);
     this.cdrService.updateBook(obj).subscribe(res => {
       //colocar loading
-      //this.initialize();
-      this.house = res[0];
+      this.house = res;
       this.listObjectProps();
       this.displayPropDialog = false;
     },
     error => {
     }
-    );
+    ); */
+  }
+
+  updRemoveImage(i) {
+    /* if (this.auth.isLoggedIn()) {
+      this.house.imageUrl.splice(i, 1);
+      this.cdrService.updateBook(this.house).subscribe(res => {
+        //colocar loading
+        this.house = res;
+        this.util.toastr.infoToastr('Excluído com sucesso!');
+      },
+      error => {
+      }
+      );
+    } else {
+      this.util.toastr.errorToastr('Sessão expirada, por favor refaça o login!');
+    } */
   }
 
   showDialog(imageUrl, i) {
@@ -121,7 +147,7 @@ export class DetailHouseComponent implements OnInit {
     if (!this.houseImageList[this.currentImgIndex]) {
       this.currentImgIndex = 0;
     }
-    this.currentImgUrl = this.houseImageList[this.currentImgIndex].imageUrl;
+    this.currentImgUrl = this.houseImageList[this.currentImgIndex];
   }
 
   prevImage() {
@@ -129,7 +155,7 @@ export class DetailHouseComponent implements OnInit {
     if (!this.houseImageList[this.currentImgIndex]) {
       this.currentImgIndex = this.houseImageList.length - 1;
     }
-    this.currentImgUrl = this.houseImageList[this.currentImgIndex].imageUrl;
+    this.currentImgUrl = this.houseImageList[this.currentImgIndex];
   }
 
   @HostListener('window:resize', ['$event'])

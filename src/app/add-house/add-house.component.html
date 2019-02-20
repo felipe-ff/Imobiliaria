@@ -1,6 +1,6 @@
 <label style="font-size: 22px">Adicionar novo Imóvel (Administrador)</label>
 <form [formGroup]="newForm" id="NewForm" class="mt-3" novalidate style="display: flex; flex-direction: column;">
-  <div class="d-flex flex-column flex-wrap" style="margin-top:1px; width: 650px; height:322px">
+  <div class="d-flex flex-column flex-wrap" style="margin-top:1px; width: 650px; height:400px">
     <label class="label-login mb-2 mr-120">Tipo</label>
     <select class="form-control" cWidth="250px" style="margin-bottom: .5rem" formControlName="type">
       <option value="">Selecione...</option>
@@ -32,6 +32,14 @@
       <option value="3">3 ou mais Salas</option>
     </select>
 
+    <label class="label-login">Cozinhas</label>
+    <select class="form-control" cWidth="250px" style="margin-bottom: .5rem" formControlName="kitchen">
+      <option value="">Selecione...</option>
+      <option value="1">1 Cozinha</option>
+      <option value="2">2 Cozinhas</option>
+      <option value="3">3 ou mais Cozinhas</option>
+    </select>
+
     <label class="label-login">Cidade</label>
     <select class="form-control" cWidth="250px" style="margin-bottom: .5rem" formControlName="city">
       <option value="">Selecione...</option>
@@ -39,12 +47,22 @@
       <option value="2">Pouso Alegre</option>
       <option value="3">Itajubá</option>
     </select>
+
     <label class="label-login">Bairro</label>
     <select class="form-control" cWidth="250px" style="margin-bottom: .5rem" formControlName="district">
       <option value="">Selecione...</option>
       <option value="1">Centro</option>
       <option value="2">Inatel</option>
     </select>
+
+    <label class="label-login">Garagem para:</label>
+    <select class="form-control" cWidth="250px" style="margin-bottom: .5rem" formControlName="garage">
+      <option value="">Selecione...</option>
+      <option value="1">1 Carro</option>
+      <option value="2">2 Carros</option>
+      <option value="3">3 ou mais Carros</option>
+    </select>
+
     <label class="label-login">Preço</label>
     <input cWidth="240px" class="form-control mb-2" formControlName="price">
 

@@ -33,6 +33,7 @@ export class ListHousesComponent implements OnInit {
       const type = params['type'];
       this.cdrService.getBooks(type).subscribe( data => {
         this.houseList = data.items;
+        console.log(this.houseList);
         this.loading = false;
       });
     });

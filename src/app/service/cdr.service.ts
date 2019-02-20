@@ -41,8 +41,8 @@ export class CdrService {
     return this.http.post(this.baseUrl + '/books/add', formData);
   }
 
-  updateBook(obj) {
-    return this.http.put(this.baseUrlApi + '/' + obj.id, obj);
+  updateBook(id, formData) {
+    return this.http.put(this.baseUrlApi + '/' + id, formData);
   }
 
   getCdrsWithPaging(filter: any, page: string, size: string) {

@@ -13,6 +13,21 @@ export class UtilityService {
 
   constructor(public toastr: ToastrManager) {}
 
+  buildFormData(obj) {
+    const formData: any = new FormData();
+
+    for (const key in obj) {
+      if (obj.hasOwnProperty(key)) {
+        const value = obj[key];
+        if (value) {
+          formData.append(key, value);
+        }
+      }
+    }
+
+    return formData;
+  }
+
   convertToComma(filter) {
     if (filter.minValue) { filter.minValue.replace(',', '.'); }
     if (filter.maxValue) {filter.maxValue.replace(',', '.'); }

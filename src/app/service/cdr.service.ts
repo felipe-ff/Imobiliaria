@@ -42,7 +42,7 @@ export class CdrService {
   }
 
   updateBook(id, formData) {
-    return this.http.put(this.baseUrlApi + '/' + id, formData);
+    return this.http.put<any>(this.baseUrlApi + '/' + id, formData);
   }
 
   getCdrsWithPaging(filter: any, page: string, size: string) {

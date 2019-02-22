@@ -47,7 +47,6 @@ export class DetailHouseComponent implements OnInit {
       .subscribe( data => {
         this.house = data;
         this.houseImageList = data.imageUrl;
-        console.log(this.houseImageList);
         this.listObjectProps();
         /*const img = new Image();
         img.addEventListener('load', function() {
@@ -64,35 +63,28 @@ export class DetailHouseComponent implements OnInit {
   }
 
   onUpload() {
-    const formData: any = new FormData();
-    this.loading = true;
+    if (this.selectedFile && this.selectedFile.length > 0) {
+      this.loading = true;
+      const formData: any = this.util.buildFormData(this.house);
 
-    console.log(this.house);
-    for (const key in this.house) {
-      if (this.house.hasOwnProperty(key)) {
-        const value = this.house[key];
-        if (value) {
-          formData.append(key, value);
-        }
-      }
-    }
-
-    if (this.selectedFile) {
       const files: Array<File> = this.selectedFile;
       for (let i = 0; i < files.length; i++) {
           formData.append('images', files[i], files[i]['name']);
       }
-    }
 
-    this.cdrService.updateBook(this.house.id, formData).subscribe(res => {
-      this.loading = false;
-      this.house = res;
-      this.listObjectProps();
-    },
-    error => {
-      this.loading = false;
+      this.cdrService.updateBook(this.house.id, formData).subscribe(res => {
+        this.loading = false;
+        this.selectedFile = [];
+        this.util.toastr.infoToastr('Salvo com sucesso!');
+        this.house = res;
+        this.houseImageList = res.imageUrl;
+      },
+      error => {
+        this.selectedFile = [];
+        this.loading = false;
+      }
+      );
     }
-    );
   }
 
   update(field, value) {
@@ -110,19 +102,22 @@ export class DetailHouseComponent implements OnInit {
   }
 
   updRemoveImage(i) {
-    /* if (this.auth.isLoggedIn()) {
+    if (this.auth.isLoggedIn()) {
       this.house.imageUrl.splice(i, 1);
-      this.cdrService.updateBook(this.house).subscribe(res => {
+
+      const formData: any = this.util.buildFormData(this.house);
+
+      this.cdrService.updateBook(this.house.id, formData).subscribe(res => {
         //colocar loading
         this.house = res;
+        this.houseImageList = res.imageUrl;
         this.util.toastr.infoToastr('Excluído com sucesso!');
       },
       error => {
-      }
-      );
+      });
     } else {
       this.util.toastr.errorToastr('Sessão expirada, por favor refaça o login!');
-    } */
+    }
   }
 
   showDialog(imageUrl, i) {

@@ -3,9 +3,9 @@
 </div>
 <div *ngIf="!loading" class="d-flex flex-column mt-2" style="width:100%">
 
-  <div id="description-div" class="d-flex flex-column" style="width:90%; border-bottom: 1.4px solid #f1f1f1">
-      <label style="font-size:26px">Detalhes do Imóvel:</label>
-      <div class="d-flex ml-3 mr-2" style="width:70%">
+  <div id="description-div" class="d-flex flex-column" style="border-bottom: 1.4px solid #f1f1f1">
+      <label style="font-size:26px; text-align: center">Detalhes do Imóvel:</label>
+      <div class="d-flex ml-3 mr-2">
         <!-- <div class="d-flex ml-2">
           <label style="margin-right:6px;font-size:20px">Tipo:</label>
           <label style="font-size:20px; color:red">Locação</label>
@@ -31,7 +31,7 @@
       </div>
   </div>
 
-  <div class="d-flex justify-content-center mt-2" style="height:39px;">
+  <div *ngIf="auth.isLoggedIn()" class="d-flex justify-content-center mt-2" style="height:39px;">
     <div style="position: relative" class="mt-2">
       <input #fileInputEdit type="file" (change)="onFileSelected($event)" multiple>
       <button id="select-btn-edit" type="button" (click)="fileInputEdit.click()" class="btn btn-danger btn-sm mt-2 ml-1">Selecionar imagens...</button>
@@ -41,7 +41,7 @@
     <p-progressSpinner *ngIf="loading"></p-progressSpinner>
   </div>
 
-  <div id="images-div" class="d-flex flex-wrap mt-3 ml-5 mr-5" style="width:100%">
+  <div id="images-div" class="d-flex flex-wrap mt-3 justify-content-start" style="width:1150px">
     <div *ngFor="let img of houseImageList; let i = index" style="margin-right: 2px; margin-top: 2px">
       <div style="position: relative; cursor: pointer">
         <img class="edit-image" src="{{img}}" (click)="showDialog(img, i)" target="imgbox" style="max-width:380px;height:230px">
@@ -62,7 +62,7 @@
       <label class="close-dialog" (click)="displayDialog = false">Fechar [x]</label>
     </div>
 
-    <div style="position: relative" style="max-width: 100%; max-height: 90%">
+    <div style="position: relative" style="max-width: 100%">
       <div class="circle prev-btn" (click)="prevImage()">
         <span class="fa fa-angle-left prev-arrow-image"></span>
       </div>

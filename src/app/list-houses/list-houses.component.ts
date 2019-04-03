@@ -14,7 +14,6 @@ import { Purpose } from '../model/purpose.enum';
 })
 export class ListHousesComponent implements OnInit {
 
-  heroes$: Observable<any[]>;
   houseList;
   loading = false;
   purpose = Purpose;
@@ -31,8 +30,12 @@ export class ListHousesComponent implements OnInit {
 
     this.route.queryParams.subscribe(params => {
       const type = params['type'];
+      console.log(type);
       this.cdrService.getBooks(type).subscribe( data => {
         this.houseList = data.items;
+        this.houseList.forEach(element => {
+          element.loading = true;
+        });
         console.log(this.houseList);
         this.loading = false;
       });
@@ -52,6 +55,10 @@ export class ListHousesComponent implements OnInit {
         console.log(headers);
       }
       );
+  }
+
+  onLoad(house) {
+    house.loading = false;
   }
 
 }

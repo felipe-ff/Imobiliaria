@@ -21,7 +21,11 @@ export class CdrService {
   }
 
   getBooks(filters) {
-    return this.http.get<any>(this.baseUrlApi + '/filters/' + filters) ;
+    return this.http.get<any>(this.baseUrlApi + '/filters/' + filters + '/limit/' + 5 + '/offset/' + 0);
+  }
+
+  getBooksCount(filters) {
+    return this.http.get<any>(this.baseUrlApi + '/filters/' + filters + '/limit/' + null + '/offset/' + 0);
   }
 
   login(user) {

@@ -7,7 +7,8 @@
 <div *ngFor="let house of houseList; let i = index">
   <p-card id="listCard" header="CASA" subheader="Santa Rita do Sapucaí" [style]="{width: '895px', marginTop: '18px', marginRight: '5px'}" styleClass="ui-card-shadow">
     <div (click)="detailBtn.click()" style="cursor:pointer">
-      <img src="{{house.imageUrl ? house.imageUrl[0] : ''}}" width="310px" height="189.5px">
+      <img [hidden]="house.loading" (load)="onLoad(house)" src="{{house.imageUrl ? house.imageUrl[0] : ''}}" width="310px" height="189.5px">
+      <img *ngIf="house.loading" src="/assets/img/loading.gif" alt="loading" width="310px" height="189.5px" />
     </div>
     <div class="d-flex flex-column ml-4 mr-2" style="width:410px">
       <div style="color:#019DA5; font-size:18px">{{purpose[house.purpose]}}</div>

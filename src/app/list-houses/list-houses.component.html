@@ -11,21 +11,21 @@
       <img *ngIf="house.loading" src="/assets/img/loading.gif" alt="loading" width="310px" height="189.5px" />
     </div>
     <div class="d-flex flex-column ml-4 mr-2" style="width:410px">
-      <div style="color:#019DA5; font-size:18px">{{purpose[house.purpose]}}</div>
-      <div>Santa Rita do Sapucaí - MG</div>
-      <div>Centro</div>
+      <div style="color:#019DA5; font-size:18px">Residencial</div>  <!--{{purpose[house.purpose]}}-->
+      <div style="font-weight:bold">Santa Rita do Sapucaí - MG</div>
+      <div>Bairro: Centro</div>
       <div style="margin-left:-2px">
         <ul>
-          <li *ngIf="house.dorm">{{house.dorm}} dormitório(s)</li>
-          <li *ngIf="house.livingRoom">{{house.livingRoom}} sala(s)</li>
-          <li *ngIf="house.bathroom">{{house.bathroom}} banheiro(s)</li>
-          <li *ngIf="house.garage">{{house.garage}} vaga(s)</li>
-          <li *ngIf="house.kitchen">{{house.kitchen}} cozinha(s)</li>
+          <li *ngIf="house.dorm">{{house.dorm}} dormitório{{house.dorm > 1 ? 's' : ''}}</li>
+          <li *ngIf="house.livingRoom">{{house.livingRoom}} sala</li>
+          <li *ngIf="house.bathroom">{{house.bathroom}} banheiro{{house.bathroom > 1 ? 's' : ''}}</li>
+          <li *ngIf="house.garage">{{house.garage}} vaga{{house.garage > 1 ? 's' : ''}}</li>
+          <li *ngIf="house.kitchen">{{house.kitchen}} cozinha</li>
         </ul>
       </div>
     </div>
     <div>
-        <div>CÓDIGO</div>
+        <div>CHAVE</div>
         <div>0001</div>
         <div>Locação</div>
         <div style="color:#019DA5; font-size:16px">R$ {{house.price}}</div>

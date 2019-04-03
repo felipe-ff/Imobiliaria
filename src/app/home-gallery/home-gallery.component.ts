@@ -11,6 +11,8 @@ export class HomeGalleryComponent implements OnInit, AfterViewInit, OnDestroy {
 
   showArrows = false;
 
+  galleryImg = '../assets/img/004.jpg';
+
   constructor(public renderer: Renderer) { }
 
   ngOnInit() {
@@ -33,7 +35,11 @@ export class HomeGalleryComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   nextImage() {
-    //this.showArrows = true;
+    if (this.galleryImg === '../assets/img/004.jpg') {
+      this.galleryImg = '../assets/img/005.jpg';
+    } else {
+      this.galleryImg = '../assets/img/004.jpg';
+    }
   }
 
 

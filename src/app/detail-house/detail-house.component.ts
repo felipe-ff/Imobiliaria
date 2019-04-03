@@ -178,31 +178,31 @@ export class DetailHouseComponent implements OnInit {
         switch (property) {
           case 'dorm':
             if (this.house[property]) {
-              this.propList.push({name: 'Dormitórios', field: property, value: this.house[property], icon: 'fa fa-bed'});
+              this.propList.push({name: 'Dormitórios', field: property, value: this.house[property], icon: 'fas fa-bed'});
             }
             break;
 
           case 'kitchen':
             if (this.house[property]) {
-              this.propList.push({name: 'Cozinhas', field: property, value: this.house[property], icon: 'fa fa-cutlery'});
+              this.propList.push({name: 'Cozinhas', field: property, value: this.house[property], icon: 'fas fa-utensils'});
             }
             break;
 
           case 'garage':
             if (this.house[property]) {
-              this.propList.push({name: 'Vagas na garagem', field: property, value: (this.house[property]), icon: 'fa fa-car'});
+              this.propList.push({name: 'Vagas na garagem', field: property, value: (this.house[property]), icon: 'fas fa-car'});
             }
             break;
 
           case 'livingRoom':
             if (this.house[property]) {
-              this.propList.push({name: 'Salas', field: property, value: (this.house[property]), icon: 'fa fa-simplybuilt'});
+              this.propList.push({name: 'Salas', field: property, value: (this.house[property]), icon: 'fas fa-couch'});
             }
             break;
 
           case 'bathroom':
             if (this.house[property]) {
-              this.propList.push({name: 'Banheiros', field: property, value: (this.house[property]), icon: 'fa fa-tint'});
+              this.propList.push({name: 'Banheiros', field: property, value: (this.house[property]), icon: 'fas fa-toilet'});
             }
             break;
         }

@@ -35,7 +35,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.searchCdrForm = this.initializeForm();
     this.loginForm = this.initializeLoginForm();
     this.durationTypeOptions = [
-      {name: 'Todos', code: ''},
+      //{name: 'Todos', code: ''},
       {name: 'Aluguel', code: 'rent'},
       {name: 'Venda', code: 'sell'}
     ];

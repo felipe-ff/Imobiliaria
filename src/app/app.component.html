@@ -46,40 +46,34 @@
 
         <form [formGroup]="searchCdrForm" id="CdrSearchForm" novalidate>
           <div class="row orderingPanel orderingPanelFirst">
-            <div class="col-sm-12 row-filters p-2" style="height:76px;">
-              <div class="d-flex align-items-center" style="width: 900px">
+            <div class="col-sm-12 row-filters p-2" style="height:56px;">
+              <div class="d-flex align-items-center" style="width: 990px">
                 <div>
                   <p-selectButton [options]="durationTypeOptions" optionLabel="name" formControlName="purpose"></p-selectButton>
                 </div>
-                <div class="d-flex flex-column">
-                  <div class="d-flex mb-2">
-                    <select class="form-control custom-small large" formControlName="type">
-                      <option value="">Tipo...</option>
-                      <option value="0">Residencial</option>
-                      <option value="1">Comercial</option>
-                    </select>
-                    <select class="form-control custom-small large" formControlName="dorm">
-                      <option value="">Quartos...</option>
-                      <option value="1">1 Quarto</option>
-                      <option value="2">2 Quartos</option>
-                      <option value="3">3 Quartos</option>
-                    </select>
-                  </div>
+                <select class="form-control custom-small large" formControlName="type">
+                  <option value="">Tipo...</option>
+                  <option value="0">Residencial</option>
+                  <option value="1">Comercial</option>
+                </select>
+                <select class="form-control custom-small large" formControlName="dorm">
+                  <option value="">Quartos...</option>
+                  <option value="1">1 Quarto</option>
+                  <option value="2">2 Quartos</option>
+                  <option value="3">3 Quartos</option>
+                </select>
 
-                  <div class="d-flex">
-                    <select class="form-control custom-small large" formControlName="city">
-                      <option value="">Cidade...</option>
-                      <option value="1">Santa Rita do...</option>
-                      <option value="2">Pouso Alegre</option>
-                      <option value="3">Itajubá</option>
-                    </select>
-                    <select class="form-control custom-small large" formControlName="district">
-                      <option value="">Bairro...</option>
-                      <option value="1">Centro</option>
-                      <option value="2">Inatel</option>
-                    </select>
-                  </div>
-                </div>
+                <select class="form-control custom-small large" formControlName="city">
+                  <option value="">Cidade...</option>
+                  <option value="1">Santa Rita do...</option>
+                  <option value="2">Pouso Alegre</option>
+                  <option value="3">Itajubá</option>
+                </select>
+                <select class="form-control custom-small large" formControlName="district">
+                  <option value="">Bairro...</option>
+                  <option value="1">Centro</option>
+                  <option value="2">Inatel</option>
+                </select>
                 <div style="margin-left: 20px">
                   <div class="range">Valor: {{'R$ ' + f.rangeValues.value[0] + ' - ' +  (f.rangeValues.value[1] < 5000 ? 'R$ ' + f.rangeValues.value[1] : 'Max')}}</div>
                   <p-slider formControlName="rangeValues" [step]="100" [min]="0" [max]="5000" [style]="{'width':'14em'}" [range]="true"></p-slider>

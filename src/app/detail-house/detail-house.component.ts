@@ -53,7 +53,6 @@ export class DetailHouseComponent implements OnInit {
           //alert( this.naturalWidth + ' ' + this.naturalHeight );
         });
         img.src = data.imageUrl; */
-        //this.imgUrl = data.imageUrl;
         });
     });
   }

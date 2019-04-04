@@ -1,5 +1,5 @@
 export enum Purpose {
   all = 'Todos',
-  rent = 'Aluguel',
+  rent = 'Locação',
   sell = 'Venda'
 }

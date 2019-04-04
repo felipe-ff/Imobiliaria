@@ -27,7 +27,7 @@
     <div>
         <div>CHAVE</div>
         <div>0001</div>
-        <div>Locação</div>
+        <div>{{purpose[house.purpose]}}</div>
         <div style="color:#019DA5; font-size:16px">R$ {{house.price}}</div>
     </div>
     <button type="button" *ngIf="authService.isLoggedIn()" (click)="delete(house.id)" class="btn btn-danger btn-sm delete-btn"><i class="fa fa-trash"></i></button>

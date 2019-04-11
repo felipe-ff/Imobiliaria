@@ -42,7 +42,7 @@ export class CdrService {
   }
 
   addBook(formData) {
-    return this.http.post(this.baseUrl + '/books/add', formData);
+    return this.http.post(this.baseUrlApi + '/add', formData);
   }
 
   updateBook(id, formData) {

@@ -30,7 +30,7 @@
         <div>{{purpose[house.purpose]}}</div>
         <div style="color:#019DA5; font-size:16px">R$ {{house.price}}</div>
     </div>
-    <button type="button" *ngIf="authService.isLoggedIn()" (click)="delete(house.id)" class="btn btn-danger btn-sm delete-btn"><i class="fa fa-trash"></i></button>
-    <button #detailBtn type="button" [routerLink]="['/detail-house']" [queryParams]="{ id: house.id}" class="btn btn-danger btn-sm details-btn">Ver detalhes</button>
+    <button type="button" *ngIf="authService.isLoggedIn()" (click)="delete(house._id)" class="btn btn-danger btn-sm delete-btn"><i class="fa fa-trash"></i></button>
+    <button #detailBtn type="button" [routerLink]="['/detail-house']" [queryParams]="{ id: house._id}" class="btn btn-danger btn-sm details-btn">Ver detalhes</button>
   </p-card>
 </div>

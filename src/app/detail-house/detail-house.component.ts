@@ -71,7 +71,7 @@ export class DetailHouseComponent implements OnInit {
           formData.append('images', files[i], files[i]['name']);
       }
 
-      this.cdrService.updateBook(this.house.id, formData).subscribe(res => {
+      this.cdrService.updateBook(this.house._id, formData).subscribe(res => {
         this.loading = false;
         this.selectedFile = [];
         this.util.toastr.infoToastr('Salvo com sucesso!');
@@ -106,7 +106,7 @@ export class DetailHouseComponent implements OnInit {
 
       const formData: any = this.util.buildFormData(this.house);
 
-      this.cdrService.updateBook(this.house.id, formData).subscribe(res => {
+      this.cdrService.updateBook(this.house._id, formData).subscribe(res => {
         //colocar loading
         this.house = res;
         this.houseImageList = res.imageUrl;

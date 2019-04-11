@@ -8,6 +8,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { GroupService } from './service/group.service';
 import { PresetService } from './service/preset.service';
 import { CdrService } from './service/cdr.service';
+import { UserService } from './service/user.service';
 import { AuthService } from './service/AuthService';
 import { UtilityService } from './service/utility.service';
 import { CalendarModule } from 'primeng/calendar';
@@ -64,7 +65,7 @@ import { Globals } from './service/globals';
     InputTextModule
   ],
   providers: [GroupService, Globals, PresetService, {provide: HTTP_INTERCEPTORS, useClass: HttpIntercept, multi: true}, CdrService,
-    AuthService, UtilityService],
+    UserService, AuthService, UtilityService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,9 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { CdrService } from '../service/cdr.service';
 import {Router, ActivatedRoute} from '@angular/router';
-import { AuthService } from '../service/AuthService';
-import { Observable } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { AuthService } from '../service/authService';
 import { Purpose } from '../model/purpose.enum';
 
 @Component({

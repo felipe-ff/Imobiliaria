@@ -3,7 +3,7 @@ import { UtilityService } from './service/utility.service';
 import { ChangeDetectorRef } from '@angular/core';
 import { VERSION } from '../environments/version';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from './service/AuthService';
+import { AuthService } from './service/authService';
 import { Router } from '@angular/router';
 import { isDevMode } from '@angular/core';
 

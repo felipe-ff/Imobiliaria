@@ -4,7 +4,7 @@ import {Router, ActivatedRoute} from '@angular/router';
 import 'rxjs/add/operator/filter';
 import { CdrService } from '../service/cdr.service';
 import { Dialog } from 'primeng/dialog';
-import { AuthService } from '../service/AuthService';
+import { AuthService } from '../service/authService';
 import { UtilityService } from '../service/utility.service';
 
 @Component({

@@ -5,11 +5,9 @@ import { AppComponent } from './app.component';
 import { routing } from './app.routing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { GroupService } from './service/group.service';
-import { PresetService } from './service/preset.service';
 import { CdrService } from './service/cdr.service';
 import { UserService } from './service/user.service';
-import { AuthService } from './service/AuthService';
+import { AuthService } from './service/authService';
 import { UtilityService } from './service/utility.service';
 import { CalendarModule } from 'primeng/calendar';
 import { SliderModule } from 'primeng/slider';
@@ -64,7 +62,7 @@ import { Globals } from './service/globals';
     RadioButtonModule,
     InputTextModule
   ],
-  providers: [GroupService, Globals, PresetService, {provide: HTTP_INTERCEPTORS, useClass: HttpIntercept, multi: true}, CdrService,
+  providers: [Globals, {provide: HTTP_INTERCEPTORS, useClass: HttpIntercept, multi: true}, CdrService,
     UserService, AuthService, UtilityService],
   bootstrap: [AppComponent]
 })

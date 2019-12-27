@@ -1,7 +1,7 @@
-<div class="d-flex justify-content-center" style="width:100%">
+<div class="d-flex justify-content-center w-100">
   <p-progressSpinner *ngIf="loading"></p-progressSpinner>
 </div>
-<div *ngIf="!loading" class="d-flex flex-column mt-2" style="width:100%">
+<div *ngIf="!loading" class="d-flex flex-column mt-2 w-100">
 
   <div id="description-div" class="d-flex flex-column" style="border-bottom: 1.4px solid #f1f1f1">
       <label style="font-size:26px; text-align: center">Detalhes do Imóvel:</label>
@@ -56,30 +56,38 @@
 <!--<button type="button" routerLink="/list-houses" class="btn btn-danger btn-sm mt-2 ml-1">Voltar</button>-->
 
 <p-dialog id="galeryDiag" #presetDiag [showHeader]="false" [(visible)]="displayDialog" [modal]="true" [responsive]="true" [minY]="70"
-    [baseZIndex]="10000" [height]="heightExp" [width]="widthExp">
+  [baseZIndex]="10000" [height]="heightExp" [width]="widthExp">
 
-    <div class="d-flex flex-row-reverse" cWidth="100%">
-      <label class="close-dialog" (click)="displayDialog = false">Fechar [x]</label>
-    </div>
+  <div class="d-flex flex-row-reverse" cWidth="100%">
+    <label class="close-dialog" (click)="displayDialog = false">Fechar [x]</label>
+  </div>
 
-    <div style="position: relative" style="max-width: 100%">
-      <div class="circle prev-btn" (click)="prevImage()">
-        <span class="fa fa-angle-left prev-arrow-image"></span>
-      </div>
-      <img src="{{currentImgUrl}}" style="margin-left: 30px; margin-right: 5px" [width]="widthExp -80" [height]="heightExp - 50">
-      <div class="circle next-btn" (click)="nextImage()">
-        <span class="fa fa-angle-right next-arrow-image"></span>
-      </div>
+  <div style="position: relative" style="max-width: 100%">
+    <div class="circle prev-btn" (click)="prevImage()">
+      <span class="fa fa-angle-left prev-arrow-image"></span>
     </div>
+    <img src="{{currentImgUrl}}" style="margin-left: 30px; margin-right: 5px" [width]="widthExp -80" [height]="heightExp - 50">
+    <div class="circle next-btn" (click)="nextImage()">
+      <span class="fa fa-angle-right next-arrow-image"></span>
+    </div>
+  </div>
 </p-dialog>
 
-<p-dialog #propertyDiag header="{{dialogObj.name}}" [showHeader]="true" [(visible)]="displayPropDialog" [modal]="true" [responsive]="true" [minY]="70"
-    [baseZIndex]="10000" [width]="200" [height]="350">
+<p-dialog #propertyDiag
+  header="{{dialogObj.name}}"
+  [showHeader]="true"
+  [(visible)]="displayPropDialog"
+  [modal]="true"
+  [responsive]="true"
+  [minY]="70"
+  [baseZIndex]="10000"
+  [width]="200"
+  [height]="350">
     <div class="d-flex justify-content-center">
       <input #inputValue cWidth="75px" class="form-control">
     </div>
     <p-footer>
-        <button type="button" pButton icon="pi pi-check" (click)="update(dialogObj.field, inputValue.value)" label="Yes"></button>
-        <button type="button" pButton icon="pi pi-close" (click)="displayPropDialog=false" label="No" class="ui-button-secondary"></button>
+      <button type="button" pButton icon="pi pi-check" (click)="update(dialogObj.field, inputValue.value)" label="Yes"></button>
+      <button type="button" pButton icon="pi pi-close" (click)="displayPropDialog=false" label="No" class="ui-button-secondary"></button>
     </p-footer>
 </p-dialog>

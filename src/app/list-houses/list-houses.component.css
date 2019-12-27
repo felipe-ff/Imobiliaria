@@ -17,3 +17,8 @@
 .ui-card-body {
   padding: 0;
 }
+
+.price-box {
+  color:#019DA5;
+  font-size: 16px;
+}

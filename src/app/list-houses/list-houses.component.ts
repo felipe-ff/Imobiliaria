@@ -25,18 +25,20 @@ export class ListHousesComponent implements OnInit {
     this.listHouses();
   }
 
+  fetchImageUrl(house) {
+    return house.imageUrl ? house.imageUrl[0] : '';
+  }
+
   listHouses() {
     this.loading = true;
 
     this.route.queryParams.subscribe(params => {
       const type = params['type'];
-      console.log(type);
       this.cdrService.getBooks(type).subscribe( data => {
         this.houseList = data.items;
         this.houseList.forEach(element => {
           element.loading = true;
         });
-        console.log(this.houseList);
         this.loading = false;
       });
     });

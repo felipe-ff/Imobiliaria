@@ -3,7 +3,7 @@
 </div>
 -->
 
-<div #myDiv (mouseenter)="showArrows = true" (mouseleave) ="showArrows = false" style="position: relative;padding-right: 55px;padding-left:55px">
+<div #myDiv class="home-gallery" (mouseenter)="showArrows = true" (mouseleave) ="showArrows = false">
   <div *ngIf="showArrows" class="circle prev-btn" (click)="nextImage()">
     <span class="fa fa-angle-left prev-arrow-image"></span>
   </div>

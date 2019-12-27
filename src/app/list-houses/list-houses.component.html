@@ -1,36 +1,59 @@
-<button type="button" *ngIf="authService.isLoggedIn()" routerLink="/add-house" class="btn btn-danger btn-sm mt-2 ml-2">Adicionar Novo</button>
+<button type="button"
+  *ngIf="authService.isLoggedIn()"
+   routerLink="/add-house"
+   class="btn btn-danger btn-sm mt-2 ml-2">
+    Adicionar Novo
+</button>
 
 <div class="d-flex justify-content-center" style="width:100%">
     <p-progressSpinner *ngIf="loading"></p-progressSpinner>
 </div>
 
 <div *ngFor="let house of houseList; let i = index">
-  <p-card id="listCard" header="CASA" subheader="Santa Rita do Sapucaí" [style]="{width: '895px', marginTop: '18px', marginRight: '5px'}" styleClass="ui-card-shadow">
-    <div (click)="detailBtn.click()" style="cursor:pointer">
-      <img [hidden]="house.loading" (load)="onLoad(house)" src="{{house.imageUrl ? house.imageUrl[0] : ''}}" width="310px" height="189.5px">
-      <img *ngIf="house.loading" src="/assets/img/loading.gif" alt="loading" width="310px" height="189.5px" />
-    </div>
-    <div class="d-flex flex-column ml-4 mr-2" style="width:410px">
-      <div style="color:#019DA5; font-size:18px">Residencial</div>  <!--{{purpose[house.purpose]}}-->
-      <div style="font-weight:bold">Santa Rita do Sapucaí - MG</div>
-      <div>Bairro: Centro</div>
-      <div style="margin-left:-2px">
-        <ul>
-          <li *ngIf="house.dorm">{{house.dorm}} dormitório{{house.dorm > 1 ? 's' : ''}}</li>
-          <li *ngIf="house.livingRoom">{{house.livingRoom}} sala</li>
-          <li *ngIf="house.bathroom">{{house.bathroom}} banheiro{{house.bathroom > 1 ? 's' : ''}}</li>
-          <li *ngIf="house.garage">{{house.garage}} vaga{{house.garage > 1 ? 's' : ''}}</li>
-          <li *ngIf="house.kitchen">{{house.kitchen}} cozinha</li>
-        </ul>
+  <p-card id="listCard"
+    header="CASA"
+    subheader="Santa Rita do Sapucaí"
+    [style]="{width: '895px', marginTop: '18px', marginRight: '5px'}"
+    styleClass="ui-card-shadow">
+      <div (click)="detailBtn.click()" style="cursor:pointer">
+        <img [hidden]="house.loading" (load)="onLoad(house)" src="{{fetchImageUrl(house)}}" width="310px" height="189.5px">
+        <img *ngIf="house.loading" src="/assets/img/loading.gif" alt="loading" width="310px" height="189.5px" />
       </div>
-    </div>
-    <div>
-        <div>CHAVE</div>
-        <div>0001</div>
-        <div>{{purpose[house.purpose]}}</div>
-        <div style="color:#019DA5; font-size:16px">R$ {{house.price}}</div>
-    </div>
-    <button type="button" *ngIf="authService.isLoggedIn()" (click)="delete(house._id)" class="btn btn-danger btn-sm delete-btn"><i class="fa fa-trash"></i></button>
-    <button #detailBtn type="button" [routerLink]="['/detail-house']" [queryParams]="{ id: house._id}" class="btn btn-danger btn-sm details-btn">Ver detalhes</button>
+      <div class="d-flex flex-column ml-4 mr-2" style="width:410px">
+        <div style="color:#019DA5; font-size:18px">Residencial</div>  <!--{{purpose[house.purpose]}}-->
+        <div style="font-weight:bold">Santa Rita do Sapucaí - MG</div>
+        <div>Bairro: Centro</div>
+        <div style="margin-left:-2px">
+          <ul>
+            <li *ngIf="house.dorm">{{house.dorm}} dormitório{{house.dorm > 1 ? 's' : ''}}</li>
+            <li *ngIf="house.livingRoom">{{house.livingRoom}} sala</li>
+            <li *ngIf="house.bathroom">{{house.bathroom}} banheiro{{house.bathroom > 1 ? 's' : ''}}</li>
+            <li *ngIf="house.garage">{{house.garage}} vaga{{house.garage > 1 ? 's' : ''}}</li>
+            <li *ngIf="house.kitchen">{{house.kitchen}} cozinha</li>
+          </ul>
+        </div>
+      </div>
+
+      <div>
+          <div>CHAVE</div>
+          <div>0001</div>
+          <div>{{purpose[house.purpose]}}</div>
+          <div class="price-box">R$ {{house.price}}</div>
+      </div>
+
+      <button type="button"
+        *ngIf="authService.isLoggedIn()"
+        (click)="delete(house._id)"
+        class="btn btn-danger btn-sm delete-btn">
+          <i class="fa fa-trash"></i>
+      </button>
+
+      <button #detailBtn
+        type="button"
+        [routerLink]="['/detail-house']"
+        [queryParams]="{ id: house._id}"
+        class="btn btn-danger btn-sm details-btn">
+          Ver detalhes
+      </button>
   </p-card>
 </div>

@@ -12,3 +12,18 @@
 .label-login {
   font-weight: 700;
 }
+
+#addNewHouseForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.house-container {
+  margin-top:1px;
+  width: 650px;
+  height:400px
+}
+
+.select-house {
+  margin-bottom: .5rem;
+}

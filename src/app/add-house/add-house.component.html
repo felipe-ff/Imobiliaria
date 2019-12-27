@@ -1,14 +1,14 @@
 <label style="font-size: 22px">Adicionar novo Imóvel (Administrador)</label>
-<form [formGroup]="newForm" id="NewForm" class="mt-3" novalidate style="display: flex; flex-direction: column;">
-  <div class="d-flex flex-column flex-wrap" style="margin-top:1px; width: 650px; height:400px">
+<form [formGroup]="addNewHouseForm" id="addNewHouseForm" class="mt-3" novalidate>
+  <div class="d-flex flex-column flex-wrap house-container">
     <label class="label-login mb-2 mr-120">Tipo</label>
-    <select class="form-control" cWidth="250px" style="margin-bottom: .5rem" formControlName="type">
+    <select class="form-control select-house" cWidth="250px" formControlName="type">
       <option value="">Selecione...</option>
       <option value="0">Residencial</option>
       <option value="1">Comercial</option>
     </select>
     <label class="label-login mr-120">Quartos</label>
-    <select class="form-control" cWidth="250px" style="margin-bottom: .5rem" formControlName="dorm">
+    <select class="form-control select-house" cWidth="250px" formControlName="dorm">
       <option value="0">Selecione...</option>
       <option value="1">1 Quarto</option>
       <option value="2">2 Quartos</option>
@@ -17,7 +17,7 @@
       <option value="5">5 ou mais Quartos</option>
     </select>
     <label class="label-login">Banheiros</label>
-    <select class="form-control" cWidth="250px" style="margin-bottom: .5rem" formControlName="bathroom">
+    <select class="form-control select-house" cWidth="250px" formControlName="bathroom">
       <option value="0">Selecione...</option>
       <option value="1">1 Banheiro</option>
       <option value="2">2 Banheiros</option>
@@ -25,7 +25,7 @@
     </select>
 
     <label class="label-login">Salas</label>
-    <select class="form-control" cWidth="250px" style="margin-bottom: .5rem" formControlName="livingRoom">
+    <select class="form-control select-house" cWidth="250px" formControlName="livingRoom">
       <option value="0">Selecione...</option>
       <option value="1">1 Sala</option>
       <option value="2">2 Salas</option>
@@ -33,7 +33,7 @@
     </select>
 
     <label class="label-login">Cozinhas</label>
-    <select class="form-control" cWidth="250px" style="margin-bottom: .5rem" formControlName="kitchen">
+    <select class="form-control select-house" cWidth="250px" formControlName="kitchen">
       <option value="0">Selecione...</option>
       <option value="1">1 Cozinha</option>
       <option value="2">2 Cozinhas</option>
@@ -41,7 +41,7 @@
     </select>
 
     <label class="label-login">Cidade</label>
-    <select class="form-control" cWidth="250px" style="margin-bottom: .5rem" formControlName="city">
+    <select class="form-control select-house" cWidth="250px" formControlName="city">
       <option value="0">Selecione...</option>
       <option value="1">Santa Rita do...</option>
       <option value="2">Pouso Alegre</option>
@@ -49,14 +49,14 @@
     </select>
 
     <label class="label-login">Bairro</label>
-    <select class="form-control" cWidth="250px" style="margin-bottom: .5rem" formControlName="district">
+    <select class="form-control select-house" cWidth="250px" formControlName="district">
       <option value="0">Selecione...</option>
       <option value="1">Centro</option>
       <option value="2">Inatel</option>
     </select>
 
     <label class="label-login">Garagem para:</label>
-    <select class="form-control" cWidth="250px" style="margin-bottom: .5rem" formControlName="garage">
+    <select class="form-control select-house" cWidth="250px" formControlName="garage">
       <option value="0">Selecione...</option>
       <option value="1">1 Carro</option>
       <option value="2">2 Carros</option>
@@ -67,7 +67,7 @@
     <input cWidth="240px" class="form-control mb-2" formControlName="price">
 
     <label class="label-login">Finalidade</label>
-    <select class="form-control" cWidth="250px" style="margin-bottom: .5rem" formControlName="purpose">
+    <select class="form-control select-house" cWidth="250px" formControlName="purpose">
       <option value="">Selecione...</option>
       <option value="rent">Aluguel</option>
       <option value="sell">Venda</option>
@@ -78,7 +78,12 @@
 <div class="d-flex mt-2" style="height:39px">
   <div style="position: relative" class="mt-2">
     <input #fileInput type="file" (change)="onFileSelected($event)" multiple>
-    <button id="select-btn" type="button" (click)="fileInput.click()" class="btn btn-danger btn-sm mt-2 ml-1">Selecionar imagens...</button>
+    <button id="select-btn"
+      type="button"
+      (click)="fileInput.click()"
+      class="btn btn-danger btn-sm mt-2 ml-1">
+        Selecionar imagens...
+    </button>
   </div>
   <!--<input type="button" class="btn btn-danger btn-sm mt-2 ml-1" value="Fazer upload" (click)="onUpload()">-->
 

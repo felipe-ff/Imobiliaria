@@ -14,12 +14,12 @@ export class AddHouseComponent implements OnInit {
 
   selectedFile: Array<File> = [];
   loading = false;
-  newForm: FormGroup;
+  addNewHouseForm: FormGroup;
 
   constructor(private http: HttpClient, private router: Router, private cdrService: CdrService, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
-    this.newForm = this.initializeForm();
+    this.addNewHouseForm = this.initializeForm();
   }
 
   onFileSelected(event) {
@@ -59,9 +59,9 @@ export class AddHouseComponent implements OnInit {
       }
     }
 
-    for (const key in this.newForm.value) {
-      if (this.newForm.value.hasOwnProperty(key)) {
-        const value = this.newForm.value[key];
+    for (const key in this.addNewHouseForm.value) {
+      if (this.addNewHouseForm.value.hasOwnProperty(key)) {
+        const value = this.addNewHouseForm.value[key];
         if (value) {
           formData.append(key, value);
         }

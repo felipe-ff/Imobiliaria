@@ -1,3 +1,9 @@
+.home-gallery {
+  position: relative;
+  padding-right: 55px;
+  padding-left: 55px;
+}
+
 .next-arrow-image {
   color:white;
   font-size:26px;

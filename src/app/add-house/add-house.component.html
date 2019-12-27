@@ -1,12 +1,14 @@
 <label style="font-size: 22px">Adicionar novo Imóvel (Administrador)</label>
 <form [formGroup]="addNewHouseForm" id="addNewHouseForm" class="mt-3" novalidate>
   <div class="d-flex flex-column flex-wrap house-container">
+
     <label class="label-login mb-2 mr-120">Tipo</label>
     <select class="form-control select-house" cWidth="250px" formControlName="type">
       <option value="">Selecione...</option>
       <option value="0">Residencial</option>
       <option value="1">Comercial</option>
     </select>
+
     <label class="label-login mr-120">Quartos</label>
     <select class="form-control select-house" cWidth="250px" formControlName="dorm">
       <option value="0">Selecione...</option>
@@ -16,6 +18,7 @@
       <option value="4">4 Quartos</option>
       <option value="5">5 ou mais Quartos</option>
     </select>
+
     <label class="label-login">Banheiros</label>
     <select class="form-control select-house" cWidth="250px" formControlName="bathroom">
       <option value="0">Selecione...</option>
@@ -75,7 +78,7 @@
   </div>
 
 
-<div class="d-flex mt-2" style="height:39px">
+<div class="d-flex mt-2 send-container">
   <div style="position: relative" class="mt-2">
     <input #fileInput type="file" (change)="onFileSelected($event)" multiple>
     <button id="select-btn"
@@ -91,8 +94,12 @@
 </div>
 
 <div class="d-flex justify-content-center mt-4">
-  <button type="button" routerLink="/list-houses" class="btn btn-sm btn-danger" cWidth="120px">Voltar</button>
-  <button type="button" class="btn btn-sm btn-success ml-3" (click)="onUpload()" cWidth="120px">Salvar</button>
+  <button type="button" routerLink="/list-houses" class="btn btn-sm btn-danger" cWidth="120px">
+    Voltar
+  </button>
+  <button type="button" class="btn btn-sm btn-success ml-3" (click)="onUpload()" cWidth="120px">
+    Salvar
+  </button>
 </div>
 
 </form>

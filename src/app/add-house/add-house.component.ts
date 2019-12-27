@@ -16,7 +16,11 @@ export class AddHouseComponent implements OnInit {
   loading = false;
   addNewHouseForm: FormGroup;
 
-  constructor(private http: HttpClient, private router: Router, private cdrService: CdrService, private formBuilder: FormBuilder) { }
+  constructor(
+    private router: Router,
+    private cdrService: CdrService,
+    private formBuilder: FormBuilder
+  ) { }
 
   ngOnInit() {
     this.addNewHouseForm = this.initializeForm();

@@ -1,11 +1,16 @@
-import { browser, by, element } from 'protractor';
+import { browser, by, element, ElementFinder } from 'protractor';
 
 export class AppPage {
-  navigateTo() {
+  navigateToRoot() {
     return browser.get('/');
   }
 
-  getParagraphText() {
-    return element(by.css('app-root h1')).getText();
+  getNavBar(): ElementFinder {
+    return element(by.tagName('nav'));
   }
+
+  getSearchEstatesButton(): ElementFinder {
+    return element(by.css('.btn'));
+}
+
 }

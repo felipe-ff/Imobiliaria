@@ -1,14 +1,22 @@
 import { AppPage } from './app.po';
+import { browser } from 'protractor';
 
 describe('workspace-project App', () => {
-  let page: AppPage;
+  let rootPage: AppPage;
 
   beforeEach(() => {
-    page = new AppPage();
+    rootPage = new AppPage();
+    rootPage.navigateToRoot();
   });
 
-  it('should display welcome message', () => {
-    page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to app!');
+  it('Should locate the nav bar', () => {
+    expect(rootPage.getNavBar()).toBeDefined();
   });
+
+  it('Should redirect to the estates list page when search is clicked', () => {
+    const estateList = rootPage.getSearchEstatesButton();
+    estateList.click();
+    expect(browser.driver.getCurrentUrl()).toContain('/list-houses');
+  });
+
 });

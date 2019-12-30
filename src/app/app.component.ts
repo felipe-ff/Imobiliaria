@@ -33,7 +33,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   loading = false;
   displayLoadingDiag;
 
-  searchCdrForm: FormGroup;
+  formEstate: FormGroup;
   loginForm: FormGroup;
   durationTypeOptions: { name: string , code: string }[];
   rangeValues: number[] = [20, 80];
@@ -43,7 +43,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     console.log(this.cities);
-    this.searchCdrForm = this.initializeForm();
+    this.formEstate = this.initializeForm();
     this.loginForm = this.initializeLoginForm();
     this.durationTypeOptions = [
       //{name: 'Todos', code: ''},
@@ -105,11 +105,11 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   navigate() {
-    this.router.navigate(['/list-houses'], {queryParams: { type: JSON.stringify(this.searchCdrForm.value)}} );
+    this.router.navigate(['/list-houses'], {queryParams: { type: JSON.stringify(this.formEstate.value)}} );
   }
 
   get f() {
-    return this.searchCdrForm.controls;
+    return this.formEstate.controls;
   }
 
   @HostListener('window:resize', ['$event'])

@@ -32,6 +32,7 @@ import { DetailHouseComponent } from './detail-house/detail-house.component';
 import { AddHouseComponent } from './add-house/add-house.component';
 import { Globals } from './service/globals';
 import { RangeValues } from './pipes/range-values.pipe';
+import { SingleControlComponent } from './shared/single-control.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { RangeValues } from './pipes/range-values.pipe';
     ListHousesComponent,
     DetailHouseComponent,
     RangeValues,
+    SingleControlComponent,
     AddHouseComponent
   ],
   imports: [

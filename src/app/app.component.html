@@ -42,7 +42,7 @@
 
     </div>
 
-    <form [formGroup]="searchCdrForm" id="CdrSearchForm" novalidate>
+    <form [formGroup]="formEstate" novalidate>
       <div class="row orderingPanel orderingPanelFirst">
         <div class="col-sm-12 row-filters p-2" style="height:56px;">
           <div class="d-flex align-items-center" style="width: 990px">
@@ -52,33 +52,17 @@
               </p-selectButton>
             </div>
 
-            <select class="form-control custom-small large" formControlName="type">
-              <option value="">Tipo...</option>
-              <option *ngFor="let type of types | keyvalue; let i = index" [value]="i">
-                {{ type.value }}
-              </option>
-            </select>
+            <app-single-control-component label="Tipo" [control]="formEstate.controls['type']" [list]="types">
+            </app-single-control-component>
 
-            <select class="form-control custom-small large" formControlName="dorm">
-              <option value="">Quartos...</option>
-              <option *ngFor="let room of rooms | keyvalue; let i = index" [value]="i">
-                {{ room.value }}
-              </option>
-            </select>
+            <app-single-control-component label="Quartos" [control]="formEstate.controls['dorm']" [list]="rooms">
+            </app-single-control-component>
 
-            <select class="form-control custom-small large" formControlName="city">
-              <option value="">Cidade...</option>
-              <option *ngFor="let city of cities | keyvalue; let i = index" [value]="i">
-                {{ city.value }}
-              </option>
-            </select>
+            <app-single-control-component label="Cidade" [control]="formEstate.controls['city']" [list]="cities">
+            </app-single-control-component>
 
-            <select class="form-control custom-small large" formControlName="district">
-              <option value="">Bairro...</option>
-              <option *ngFor="let neightborhood of neightborhoods | keyvalue; let i = index" [value]="i">
-                {{ neightborhood.value }}
-              </option>
-            </select>
+            <app-single-control-component label="Bairro" [control]="formEstate.controls['district']" [list]="neightborhoods">
+            </app-single-control-component>
 
             <div style="margin-left: 20px">
               <div class="range">

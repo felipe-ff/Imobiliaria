@@ -1,11 +1,11 @@
 import { Component, OnInit, ViewChild, HostListener, ViewEncapsulation } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import {Router, ActivatedRoute} from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
 import 'rxjs/add/operator/filter';
 import { CdrService } from '../service/cdr.service';
 import { Dialog } from 'primeng/dialog';
 import { AuthService } from '../service/authService';
 import { UtilityService } from '../service/utility.service';
+import { PropertyItem } from '../model/property-item.enum';
 
 @Component({
   selector: 'app-detail-house',
@@ -31,8 +31,12 @@ export class DetailHouseComponent implements OnInit {
 
   @ViewChild('presetDiag') presetDiag: Dialog;
 
-  constructor(private http: HttpClient, private router: Router, private route: ActivatedRoute,
-             private cdrService: CdrService, public auth: AuthService, public util: UtilityService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private cdrService: CdrService,
+    public auth: AuthService,
+    public util: UtilityService
+  ) { }
 
   ngOnInit() {
     this.initialize();
@@ -172,39 +176,17 @@ export class DetailHouseComponent implements OnInit {
 
   listObjectProps() {
     this.propList = [];
+
     for (const property in this.house) {
-      if (this.house.hasOwnProperty(property)) {
-        switch (property) {
-          case 'dorm':
-            if (this.house[property]) {
-              this.propList.push({name: 'Dormitórios', field: property, value: this.house[property], icon: 'fas fa-bed'});
-            }
-            break;
+      if (this.house.hasOwnProperty(property) && this.house[property]) {
 
-          case 'kitchen':
-            if (this.house[property]) {
-              this.propList.push({name: 'Cozinhas', field: property, value: this.house[property], icon: 'fas fa-utensils'});
-            }
-            break;
-
-          case 'garage':
-            if (this.house[property]) {
-              this.propList.push({name: 'Vagas na garagem', field: property, value: (this.house[property]), icon: 'fas fa-car'});
-            }
-            break;
-
-          case 'livingRoom':
-            if (this.house[property]) {
-              this.propList.push({name: 'Salas', field: property, value: (this.house[property]), icon: 'fas fa-couch'});
-            }
-            break;
-
-          case 'bathroom':
-            if (this.house[property]) {
-              this.propList.push({name: 'Banheiros', field: property, value: (this.house[property]), icon: 'fas fa-toilet'});
-            }
-            break;
-        }
+        const propertyObj = {
+          name: PropertyItem[property].name,
+          field: property,
+          value: this.house[property],
+          icon: PropertyItem[property].icon
+        };
+        this.propList.push(propertyObj);
       }
     }
   }

@@ -28,8 +28,20 @@
   <div *ngIf="auth.isLoggedIn()" class="d-flex justify-content-center mt-2" style="height:39px;">
     <div style="position: relative" class="mt-2">
       <input #fileInputEdit type="file" (change)="onFileSelected($event)" multiple>
-      <button id="select-btn-edit" type="button" (click)="fileInputEdit.click()" class="btn btn-danger btn-sm mt-2 ml-1">Selecionar imagens...</button>
-      <button type="button" class="btn btn-sm btn-success ml-3" (click)="onUpload()" cWidth="120px">Enviar imagens...</button>
+
+      <button id="select-btn-edit"
+        type="button"
+        (click)="fileInputEdit.click()"
+        class="btn btn-danger btn-sm mt-2 ml-1">
+          Selecionar imagens...
+      </button>
+
+      <button type="button"
+        class="btn btn-sm btn-success ml-3"
+        (click)="onUpload()"
+        cWidth="120px">
+          Enviar imagens...
+      </button>
     </div>
 
     <p-progressSpinner *ngIf="loading"></p-progressSpinner>
@@ -49,8 +61,15 @@
 </div>
 <!--<button type="button" routerLink="/list-houses" class="btn btn-danger btn-sm mt-2 ml-1">Voltar</button>-->
 
-<p-dialog id="galeryDiag" #presetDiag [showHeader]="false" [(visible)]="displayDialog" [modal]="true" [responsive]="true" [minY]="70"
-  [baseZIndex]="10000" [height]="heightExp" [width]="widthExp">
+<p-dialog id="galeryDiag"
+  #presetDiag [showHeader]="false"
+  [(visible)]="displayDialog"
+  [modal]="true"
+  [responsive]="true"
+  [minY]="70"
+  [baseZIndex]="10000"
+  [height]="heightExp"
+  [width]="widthExp">
 
   <div class="d-flex flex-row-reverse" cWidth="100%">
     <label class="close-dialog" (click)="displayDialog = false">Fechar [x]</label>
@@ -65,6 +84,7 @@
       <span class="fa fa-angle-right next-arrow-image"></span>
     </div>
   </div>
+
 </p-dialog>
 
 <p-dialog #propertyDiag
@@ -77,6 +97,7 @@
   [baseZIndex]="10000"
   [width]="200"
   [height]="350">
+
     <div class="d-flex justify-content-center">
       <input #inputValue cWidth="75px" class="form-control">
     </div>
@@ -84,4 +105,5 @@
       <button type="button" pButton icon="pi pi-check" (click)="update(dialogObj.field, inputValue.value)" label="Yes"></button>
       <button type="button" pButton icon="pi pi-close" (click)="displayPropDialog=false" label="No" class="ui-button-secondary"></button>
     </p-footer>
+
 </p-dialog>

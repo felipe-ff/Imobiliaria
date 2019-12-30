@@ -15,6 +15,7 @@
     subheader="Santa Rita do Sapucaí"
     [style]="{width: '895px', marginTop: '18px', marginRight: '5px'}"
     styleClass="ui-card-shadow">
+
       <div (click)="detailBtn.click()" style="cursor:pointer">
         <img [hidden]="house.loading" (load)="onLoad(house)" src="{{fetchImageUrl(house)}}" width="310px" height="189.5px">
         <img *ngIf="house.loading" src="/assets/img/loading.gif" alt="loading" width="310px" height="189.5px" />
@@ -43,7 +44,7 @@
 
       <button type="button"
         *ngIf="authService.isLoggedIn()"
-        (click)="delete(house._id)"
+        (click)="delete(house.id)"
         class="btn btn-danger btn-sm delete-btn">
           <i class="fa fa-trash"></i>
       </button>
@@ -51,9 +52,10 @@
       <button #detailBtn
         type="button"
         [routerLink]="['/detail-house']"
-        [queryParams]="{ id: house._id}"
+        [queryParams]="{ id: house.id}"
         class="btn btn-danger btn-sm details-btn">
           Ver detalhes
       </button>
+
   </p-card>
 </div>

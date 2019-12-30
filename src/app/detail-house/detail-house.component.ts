@@ -52,11 +52,6 @@ export class DetailHouseComponent implements OnInit {
         this.house = data;
         this.houseImageList = data.imageUrl;
         this.listObjectProps();
-        /*const img = new Image();
-        img.addEventListener('load', function() {
-          //alert( this.naturalWidth + ' ' + this.naturalHeight );
-        });
-        img.src = data.imageUrl; */
         });
     });
   }

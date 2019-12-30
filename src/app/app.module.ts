@@ -21,7 +21,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ng6-toastr-notifications';
 import { RadioButtonModule } from 'primeng/primeng';
 import { InputTextModule } from 'primeng/inputtext';
-import { CustomWidthDirective } from './service/custom-width.directive';
 import { HttpIntercept } from './service/http-intercept';
 import {NgxMaskModule} from 'ngx-mask';
 import { ChartModule } from 'angular-highcharts';
@@ -33,6 +32,7 @@ import { AddHouseComponent } from './add-house/add-house.component';
 import { Globals } from './service/globals';
 import { RangeValues } from './pipes/range-values.pipe';
 import { SingleControlComponent } from './shared/single-control.component';
+import { CustomWidthDirective } from './directives/custom-width.directive';
 
 @NgModule({
   declarations: [

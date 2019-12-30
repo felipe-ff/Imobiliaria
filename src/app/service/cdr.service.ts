@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Cdr } from '../model/cdr.model';
 import { isDevMode } from '@angular/core';
 
 @Injectable()
@@ -78,14 +77,6 @@ export class CdrService {
   getCdrChart(entityId: string, filter: any) {
     const params = this.setDefaultFilters(filter, {name: 'entityId', value: entityId}, null, null);
     return this.http.get<any>(this.baseUrl + '/chart/cdrs', {params});
-  }
-
-  getCdrsByFilter(obj: Cdr) {
-    return this.http.get<Cdr[]>(this.baseUrl); /*  + '/' + obj */
-  }
-
-  getCdrById(id: number) {
-    return this.http.get<Cdr>(this.baseUrl + '/' + id);
   }
 
   setDefaultFilters(filter, objId, page, size) {

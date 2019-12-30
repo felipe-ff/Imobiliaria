@@ -120,3 +120,8 @@ body .ui-slider .ui-slider-range {
   flex-direction: column;
   align-items: center
 }
+
+.nav-item {
+  cursor: pointer;
+  margin-right:5px;
+}

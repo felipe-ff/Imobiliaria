@@ -1,5 +1,9 @@
 import { Component, OnInit, AfterViewInit, HostListener, ElementRef, ViewChild, ViewEncapsulation } from '@angular/core';
 import { UtilityService } from './service/utility.service';
+import { Cities } from '../app/model/cities.enum';
+import { Neightborhoods } from '../app/model/neightborhoods.enum';
+import { Rooms } from '../app/model/rooms.enum';
+import { Type } from '../app/model/type.enum';
 import { ChangeDetectorRef } from '@angular/core';
 import { VERSION } from '../environments/version';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -27,11 +31,16 @@ export class AppComponent implements OnInit, AfterViewInit {
   displayLoginDialog = false;
   loading = false;
   displayLoadingDiag;
+  cities = Cities;
+  rooms = Rooms;
+  neightborhoods = Neightborhoods;
+  types = Type;
 
   constructor(private util: UtilityService, public authService: AuthService, private cdRef: ChangeDetectorRef,
       private formBuilder: FormBuilder, private router: Router) { }
 
   ngOnInit() {
+    console.log(this.cities);
     this.searchCdrForm = this.initializeForm();
     this.loginForm = this.initializeLoginForm();
     this.durationTypeOptions = [

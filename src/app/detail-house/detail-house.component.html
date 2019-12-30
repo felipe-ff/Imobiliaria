@@ -3,32 +3,26 @@
 </div>
 <div *ngIf="!loading" class="d-flex flex-column mt-2 w-100">
 
-  <div id="description-div" class="d-flex flex-column" style="border-bottom: 1.4px solid #f1f1f1">
-      <label style="font-size:26px; text-align: center">Detalhes do Imóvel:</label>
+  <div class="description-container d-flex flex-column">
+
+      <label>Detalhes do Imóvel:</label>
       <div class="d-flex ml-3 mr-2">
-        <!-- <div class="d-flex ml-2">
-          <label style="margin-right:6px;font-size:20px">Tipo:</label>
-          <label style="font-size:20px; color:red">Locação</label>
-        </div>
-        <div class="ml-2" style="margin-bottom:10px">
-            <div><span class="fa fa-long-arrow-right mr-1 arrow-image"></span>2 dormitórios</div>
-            <div><span class="fa fa-long-arrow-right mr-1 arrow-image"></span>1 sala</div>
-            <div><span class="fa fa-long-arrow-right mr-1 arrow-image"></span>1 banheiro</div>
-            <div><span class="fa fa-long-arrow-right mr-1 arrow-image"></span>1 vaga</div>
-            <div><span class="fa fa-long-arrow-right mr-1 arrow-image"></span>1 cozinha</div>
-        </div> -->
         <div *ngFor="let prop of propList; let i = index">
           <p-card header="none" subheader="Santa Rita do Sapucaí"
-            [style]="{width: '200px', display: 'flex', justifyContent: 'center', alignItems: 'center', height: '120px', margin: '18px'}" styleClass="ui-card-shadow">
+            [style]="{width: '200px', display: 'flex', justifyContent: 'center', alignItems: 'center', height: '120px', margin: '18px'}"
+            styleClass="ui-card-shadow">
             <div class="detail-card-container">
               <span class="{{prop.icon}} detail-card-image"></span>
               <p class="detail-card-label">{{prop.name}}</p>
               <p class="detail-card-label">{{prop.value}}</p>
             </div>
-            <span *ngIf="auth.isLoggedIn()" class="fa fa-edit edit-property" (click)="showEditDialog(prop.name, prop.field)"></span>
+            <span *ngIf="auth.isLoggedIn()"
+              class="fa fa-edit edit-property"
+              (click)="showEditDialog(prop.name, prop.field)"></span>
           </p-card>
         </div>
       </div>
+
   </div>
 
   <div *ngIf="auth.isLoggedIn()" class="d-flex justify-content-center mt-2" style="height:39px;">
@@ -41,10 +35,10 @@
     <p-progressSpinner *ngIf="loading"></p-progressSpinner>
   </div>
 
-  <div id="images-div" class="d-flex flex-wrap mt-3 justify-content-start" style="width:1150px">
-    <div *ngFor="let img of houseImageList; let i = index" style="margin-right: 2px; margin-top: 2px">
-      <div style="position: relative; cursor: pointer">
-        <img class="edit-image" src="{{img}}" (click)="showDialog(img, i)" target="imgbox" style="max-width:380px;height:230px">
+  <div class="images-container mt-3">
+    <div *ngFor="let img of houseImageList; let i = index" class="house-list">
+      <div class="wrapper">
+        <img class="edit-image" src="{{img}}" (click)="showDialog(img, i)" target="imgbox">
         <div *ngIf="auth.isLoggedIn()" class="remove-btn btn btn-danger btn-sm" (click)="updRemoveImage(i)">
             <i class="fa fa-trash"></i>
         </div>
@@ -62,11 +56,11 @@
     <label class="close-dialog" (click)="displayDialog = false">Fechar [x]</label>
   </div>
 
-  <div style="position: relative" style="max-width: 100%">
+  <div class="gallery-container">
     <div class="circle prev-btn" (click)="prevImage()">
       <span class="fa fa-angle-left prev-arrow-image"></span>
     </div>
-    <img src="{{currentImgUrl}}" style="margin-left: 30px; margin-right: 5px" [width]="widthExp -80" [height]="heightExp - 50">
+    <img src="{{currentImgUrl}}" class="gallery-img-box" [width]="widthExp -80" [height]="heightExp - 50">
     <div class="circle next-btn" (click)="nextImage()">
       <span class="fa fa-angle-right next-arrow-image"></span>
     </div>

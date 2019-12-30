@@ -22,10 +22,6 @@
   /*display: none;*/
 }
 
-.edit-image:hover + .remove-btn {
-  display: inline-block;
-}
-
 .prev-btn {
   position: absolute !important;
   margin-top: 38.5vh;
@@ -114,4 +110,49 @@
   cursor: pointer;
   /* height: 0; */
   display: flex;
+}
+
+.gallery-container {
+  position: relative;
+  max-width: 100%;
+}
+
+.gallery-img-box {
+  margin-left: 30px;
+  margin-right: 5px;
+}
+
+.description-container {
+  border-bottom: 1.4px solid #f1f1f1;
+}
+
+.description-container label {
+  font-size:26px;
+  text-align: center;
+}
+
+.images-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  width: 1150px;
+}
+
+.images-container .wrapper {
+  position: relative;
+  cursor: pointer;
+}
+
+.images-container .house-list {
+  margin-right: 2px;
+  margin-top: 2px;
+}
+
+.images-container .edit-image {
+  max-width:380px;
+  height:230px;
+}
+
+.edit-image:hover + .remove-btn {
+  display: inline-block;
 }

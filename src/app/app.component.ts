@@ -23,18 +23,20 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   @ViewChild('main') main: ElementRef;
 
-  widthExp = document.documentElement.clientWidth - 18;
-  searchCdrForm: FormGroup;
-  loginForm: FormGroup;
-  durationTypeOptions: { name: string , code: string }[];
-  rangeValues: number[] = [20, 80];
-  displayLoginDialog = false;
-  loading = false;
-  displayLoadingDiag;
   cities = Cities;
   rooms = Rooms;
   neightborhoods = Neightborhoods;
   types = Type;
+
+  widthExp = document.documentElement.clientWidth - 18;
+  displayLoginDialog = false;
+  loading = false;
+  displayLoadingDiag;
+
+  searchCdrForm: FormGroup;
+  loginForm: FormGroup;
+  durationTypeOptions: { name: string , code: string }[];
+  rangeValues: number[] = [20, 80];
 
   constructor(private util: UtilityService, public authService: AuthService, private cdRef: ChangeDetectorRef,
       private formBuilder: FormBuilder, private router: Router) { }
@@ -106,7 +108,9 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.router.navigate(['/list-houses'], {queryParams: { type: JSON.stringify(this.searchCdrForm.value)}} );
   }
 
-  get f() { return this.searchCdrForm.controls; }
+  get f() {
+    return this.searchCdrForm.controls;
+  }
 
   @HostListener('window:resize', ['$event'])
   onResize(event) {

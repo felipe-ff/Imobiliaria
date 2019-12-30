@@ -82,7 +82,7 @@
 
             <div style="margin-left: 20px">
               <div class="range">
-                Valor: {{'R$ ' + f.rangeValues.value[0] + ' - ' +  (f.rangeValues.value[1] < 5000 ? 'R$ ' + f.rangeValues.value[1] : 'Max')}} <!-- oh lord -->
+                {{ f.rangeValues.value[0] | rangeValues: f.rangeValues.value[1] }}
               </div>
               <p-slider formControlName="rangeValues"
                 [step]="100"

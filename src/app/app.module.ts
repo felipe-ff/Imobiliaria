@@ -31,6 +31,7 @@ import { ListHousesComponent } from './list-houses/list-houses.component';
 import { DetailHouseComponent } from './detail-house/detail-house.component';
 import { AddHouseComponent } from './add-house/add-house.component';
 import { Globals } from './service/globals';
+import { RangeValues } from './pipes/range-values.pipe';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { Globals } from './service/globals';
     HomeGalleryComponent,
     ListHousesComponent,
     DetailHouseComponent,
+    RangeValues,
     AddHouseComponent
   ],
   imports: [

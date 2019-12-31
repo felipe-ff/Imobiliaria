@@ -17,7 +17,7 @@
     styleClass="ui-card-shadow">
 
       <div (click)="detailBtn.click()" style="cursor:pointer">
-        <img [hidden]="house.loading" (load)="onLoad(house)" src="{{fetchImageUrl(house)}}" width="310px" height="189.5px">
+        <img [hidden]="house.loading" (load)="onLoad(house)" src="{{fetchImageUrl(house)}}" width="310px" height="189px">
         <img *ngIf="house.loading" src="/assets/img/loading.gif" alt="loading" width="310px" height="189px" />
       </div>
       <div class="d-flex flex-column ml-4 mr-2" style="width:410px">

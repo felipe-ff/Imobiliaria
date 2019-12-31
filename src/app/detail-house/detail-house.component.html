@@ -8,9 +8,7 @@
       <label>Detalhes do Imóvel:</label>
       <div class="d-flex ml-3 mr-2">
         <div *ngFor="let prop of propList; let i = index">
-          <p-card header="none" subheader="Santa Rita do Sapucaí"
-            [style]="{width: '200px', display: 'flex', justifyContent: 'center', alignItems: 'center', height: '120px', margin: '18px'}"
-            styleClass="ui-card-shadow">
+          <p-card header="none" subheader="Santa Rita do Sapucaí" styleClass="ui-card-shadow">
             <div class="detail-card-container">
               <span class="{{prop.icon}} detail-card-image"></span>
               <p class="detail-card-label">{{prop.name}}</p>

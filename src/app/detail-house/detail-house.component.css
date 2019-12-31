@@ -156,3 +156,12 @@
 .edit-image:hover + .remove-btn {
   display: inline-block;
 }
+
+p-card > div {
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 120px;
+  margin: 18px;
+}

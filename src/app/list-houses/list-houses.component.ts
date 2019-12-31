@@ -16,8 +16,12 @@ export class ListHousesComponent implements OnInit {
   loading = false;
   purpose = Purpose;
 
-  constructor(private cdrService: CdrService, public authService: AuthService, private router: Router,
-    private route: ActivatedRoute) {}
+  constructor(
+    private cdrService: CdrService,
+    public authService: AuthService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit() {
     this.listHouses();

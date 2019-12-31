@@ -48,10 +48,10 @@ export class DetailHouseComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
       const id = params['id'];
       this.cdrService.getBookById(+id)
-      .subscribe( data => {
-        this.house = data;
-        this.houseImageList = data.imageUrl;
-        this.listObjectProps();
+        .subscribe( data => {
+          this.house = data;
+          this.houseImageList = data.imageUrl;
+          this.listObjectProps();
         });
     });
   }

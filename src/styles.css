@@ -183,7 +183,7 @@ input[type=radio] {
 }
 
 input[type=text], input[type=number], select.custom-small {
-  height: calc(1.5425rem + 2px) !important;
+  /*height: calc(1.5425rem + 2px) !important; thi leaks to addhouse*/ 
   padding: 0.15rem 0.3rem !important;;
   font-size: 0.875rem !important;;
   line-height: 1.5 !important;;

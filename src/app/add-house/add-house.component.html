@@ -3,21 +3,12 @@
   <div class="d-flex flex-column flex-wrap house-container">
 
     <label class="label-login mb-2 mr-120">Tipo</label>
-    <select class="form-control select-house" cWidth="250px" formControlName="type">
-      <option value="">Selecione...</option>
-      <option value="0">Residencial</option>
-      <option value="1">Comercial</option>
-    </select>
+    <app-single-control-component cWidth="250px" label="Tipo" [control]="addNewHouseForm.controls['type']" [list]="types">
+    </app-single-control-component>
 
     <label class="label-login mr-120">Quartos</label>
-    <select class="form-control select-house" cWidth="250px" formControlName="dorm">
-      <option value="0">Selecione...</option>
-      <option value="1">1 Quarto</option>
-      <option value="2">2 Quartos</option>
-      <option value="3">3 Quartos</option>
-      <option value="4">4 Quartos</option>
-      <option value="5">5 ou mais Quartos</option>
-    </select>
+    <app-single-control-component cWidth="250px" label="Quartos" [control]="addNewHouseForm.controls['dorm']" [list]="rooms">
+    </app-single-control-component>
 
     <label class="label-login">Banheiros</label>
     <select class="form-control select-house" cWidth="250px" formControlName="bathroom">
@@ -44,19 +35,12 @@
     </select>
 
     <label class="label-login">Cidade</label>
-    <select class="form-control select-house" cWidth="250px" formControlName="city">
-      <option value="0">Selecione...</option>
-      <option value="1">Santa Rita do...</option>
-      <option value="2">Pouso Alegre</option>
-      <option value="3">Itajubá</option>
-    </select>
+    <app-single-control-component cWidth="250px" label="Cidade" [control]="addNewHouseForm.controls['city']" [list]="cities">
+    </app-single-control-component>
 
     <label class="label-login">Bairro</label>
-    <select class="form-control select-house" cWidth="250px" formControlName="district">
-      <option value="0">Selecione...</option>
-      <option value="1">Centro</option>
-      <option value="2">Inatel</option>
-    </select>
+    <app-single-control-component cWidth="250px" label="Bairro" [control]="addNewHouseForm.controls['district']" [list]="neightborhoods">
+    </app-single-control-component>
 
     <label class="label-login">Garagem para:</label>
     <select class="form-control select-house" cWidth="250px" formControlName="garage">

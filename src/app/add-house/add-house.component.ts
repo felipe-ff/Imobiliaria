@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { CdrService } from '../service/cdr.service';
+import { Cities } from '../model/cities.enum';
+import { Neightborhoods } from '../model/neightborhoods.enum';
+import { Purpose } from '../model/purpose.enum';
+import { Rooms } from '../model/rooms.enum';
+import { Type } from '../model/type.enum';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import * as moment from 'moment';
 
@@ -15,6 +19,11 @@ export class AddHouseComponent implements OnInit {
   selectedFile: Array<File> = [];
   loading = false;
   addNewHouseForm: FormGroup;
+
+  cities = Cities;
+  rooms = Rooms;
+  neightborhoods = Neightborhoods;
+  types = Type;
 
   constructor(
     private router: Router,

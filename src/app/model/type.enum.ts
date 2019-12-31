@@ -1,4 +1,4 @@
 export enum Type {
-  residential = 'Residencial',
-  commercial = 'Comercial'
+  Residential = 'Residencial',
+  Commercial = 'Comercial'
 }

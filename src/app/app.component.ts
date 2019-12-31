@@ -120,7 +120,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   @HostListener('document:keydown', ['$event']) onKeydownHandler(event: KeyboardEvent) {
-    if (event.keyCode === 27) { //Escape keycode
+    if (event.keyCode === 27) { //escape keycode
       this.displayLoginDialog = false;
     }
     if (event.keyCode === 13) { //enter keycode

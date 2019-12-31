@@ -33,6 +33,7 @@ import { Globals } from './service/globals';
 import { RangeValues } from './pipes/range-values.pipe';
 import { SingleControlComponent } from './shared/single-control.component';
 import { CustomWidthDirective } from './directives/custom-width.directive';
+import { PluralStringBuilder } from './pipes/plural-string-builder.pipe';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { CustomWidthDirective } from './directives/custom-width.directive';
     ListHousesComponent,
     DetailHouseComponent,
     RangeValues,
+    PluralStringBuilder,
     SingleControlComponent,
     AddHouseComponent
   ],

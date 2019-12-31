@@ -125,3 +125,17 @@ body .ui-slider .ui-slider-range {
   cursor: pointer;
   margin-right:5px;
 }
+
+#loginForm input {
+  width: 240px;
+  margin-bottom: .5rem !important;
+}
+
+#loginForm p-footer {
+  display: flex;
+  margin-top: 22px;
+}
+
+#loginForm button {
+  width: 120px;
+}

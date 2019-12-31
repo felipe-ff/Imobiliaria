@@ -3,6 +3,7 @@ import { CdrService } from '../service/cdr.service';
 import {Router, ActivatedRoute} from '@angular/router';
 import { AuthService } from '../service/authService';
 import { Purpose } from '../model/purpose.enum';
+import { Type } from '../model/type.enum';
 
 @Component({
   selector: 'app-list-houses',
@@ -15,6 +16,7 @@ export class ListHousesComponent implements OnInit {
   houseList;
   loading = false;
   purpose = Purpose;
+  type = Type;
 
   constructor(
     private cdrService: CdrService,
@@ -38,6 +40,7 @@ export class ListHousesComponent implements OnInit {
       const type = params['type'];
       this.cdrService.getBooks(type).subscribe( data => {
         this.houseList = data.items;
+        console.log(this.houseList);
         this.houseList.forEach(element => {
           element.loading = true;
         });
